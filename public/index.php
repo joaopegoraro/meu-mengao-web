@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 require __DIR__ . '/../Autoload.php';
 Autoload::register();
@@ -14,8 +14,8 @@ $container = new Container();
 $router = new Router();
 
 $router->get(
-    route: "/example",
-    onMatch: fn($request) => $container->getExampleController()->doStuff($request),
+    route: "/",
+    onMatch: fn ($request) => $container->getExampleController()->doStuff($request),
 );
 
 http_response_code(404);

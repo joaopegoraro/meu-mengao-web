@@ -22,7 +22,7 @@ class Renderer
         }
 
         ob_start();
-        include $this->path . $view . '.php';
+        include $this->path . '/views/' . $view . '.php';
 
         return ob_get_clean();
     }

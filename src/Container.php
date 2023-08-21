@@ -6,9 +6,39 @@ namespace App;
 
 use App\Controller\ExampleController;
 use App\Core\Renderer;
+use App\Database\Database;
+use PDO;
 
 class Container
 {
+    /**
+     * @var PDO $pdo
+     */
+
+    private readonly PDO $pdo;
+
+    public function getPDO(): PDO
+    {
+        return $this->pdo ?? $this->pdo = new PDO(
+            dsn: "mysql:host=localhost;dbname=meumengao",
+            username: "root",
+            password: "pwd",
+        );
+    }
+
+    /**
+     * @var Database $database
+     */
+
+    private readonly Database $database;
+
+    public function getDatabase(): Database
+    {
+        return $this->database ?? $this->database = new Database(
+            connection: $this->getPDO(),
+        );
+    }
+
     /**
      * @var Renderer $baseRenderer
      */
@@ -17,7 +47,9 @@ class Container
 
     public function getBaseRenderer(): Renderer
     {
-        return $this->baseRenderer ?? $this->baseRenderer = new Renderer(path: App::$ROOT_DIR);
+        return $this->baseRenderer ?? $this->baseRenderer = new Renderer(
+            path: App::$ROOT_DIR,
+        );
     }
 
     /**
