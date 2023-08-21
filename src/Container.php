@@ -7,9 +7,11 @@ namespace App;
 use App\Controller\ExampleController;
 use App\Core\Renderer;
 use App\Database\Database;
+use App\Model\Posicao;
 use App\Repository\CampeonatoRepository;
 use App\Repository\NoticiaRepository;
 use App\Repository\PartidaRepository;
+use App\Repository\PosicaoRepository;
 use PDO;
 
 class Container
@@ -77,6 +79,19 @@ class Container
     public function getPartidaRepository(): PartidaRepository
     {
         return $this->partidaRepository ?? $this->partidaRepository = new PartidaRepository(
+            db: $this->getDatabase(),
+        );
+    }
+
+    /**
+     * @var PosicaoRepository $posicaoRepository
+     */
+
+    private readonly PosicaoRepository $posicaoRepository;
+
+    public function getPosicaoRepository(): PosicaoRepository
+    {
+        return $this->posicaoRepository ?? $this->posicaoRepository = new PosicaoRepository(
             db: $this->getDatabase(),
         );
     }
