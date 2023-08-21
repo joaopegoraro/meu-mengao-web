@@ -4,4 +4,6 @@
 ### VisualStudioCode ###
 .vscode/*
 
-/vendor/*
+vendor/*
+
+config/config.json
