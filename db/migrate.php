@@ -42,10 +42,11 @@ function openDatabaseConnection(): PDO
 {
     $errMessage = fn ($type) => "No {$type} provided";
 
-    $dbHost = $_GET["HOST"] ?? err($errMessage('DB_HOST'));
-    $dbUser = $_GET["USER"]  ?? err($errMessage('DB_USER'));
-    $dbPassword = $_GET["PASSWORD"]  ?? err($errMessage('DB_PWD'));
-    $dbName = $_GET["DATABASE"] ??  err($errMessage('DB_NAME'));
+    $config = json_decode(file_get_contents(dirname(__DIR__) . '/config/config.json'), associative: true);
+    $dbHost = $config["DB_HOST"] ?? err($errMessage('DB_HOST'));
+    $dbUser = $config["DB_USER"]  ?? err($errMessage('DB_USER'));
+    $dbPassword = $config["DB_PWD"]  ?? err($errMessage('DB_PWD'));
+    $dbName = $config["DB_NAME"] ??  err($errMessage('DB_NAME'));
 
     try {
         $pdo = new PDO(
