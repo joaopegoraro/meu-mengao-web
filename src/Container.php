@@ -7,7 +7,8 @@ namespace App;
 use App\Controller\ExampleController;
 use App\Core\Renderer;
 use App\Database\Database;
-use App\Repository\NoticiasRepository;
+use App\Repository\CampeonatoRepository;
+use App\Repository\NoticiaRepository;
 use PDO;
 
 class Container
@@ -41,14 +42,27 @@ class Container
     }
 
     /**
-     * @var NoticiasRepository $noticiasRepository
+     * @var NoticiasRepository $noticiaRepository
      */
 
-    private readonly NoticiasRepository $noticiasRepository;
+    private readonly NoticiaRepository $noticiaRepository;
 
-    public function getNoticiasRepository(): NoticiasRepository
+    public function getNoticiaRepository(): NoticiaRepository
     {
-        return $this->noticiasRepository ?? $this->noticiasRepository = new NoticiasRepository(
+        return $this->noticiaRepository ?? $this->noticiaRepository = new NoticiaRepository(
+            db: $this->getDatabase(),
+        );
+    }
+
+    /**
+     * @var CampeonatoRepository $campeonatoRepository
+     */
+
+    private readonly CampeonatoRepository $campeonatoRepository;
+
+    public function getCampeonatoRepository(): CampeonatoRepository
+    {
+        return $this->campeonatoRepository ?? $this->campeonatoRepository = new CampeonatoRepository(
             db: $this->getDatabase(),
         );
     }
