@@ -7,6 +7,7 @@ namespace App;
 use App\Controller\ExampleController;
 use App\Core\Renderer;
 use App\Database\Database;
+use App\Repository\NoticiasRepository;
 use PDO;
 
 class Container
@@ -20,9 +21,9 @@ class Container
     public function getPDO(): PDO
     {
         return $this->pdo ?? $this->pdo = new PDO(
-            dsn: "mysql:host=localhost;dbname=meumengao",
-            username: "root",
-            password: "pwd",
+            dsn: "mysql:host=localhost;dbname=meu_mengao",
+            username: "admin",
+            password: "password",
         );
     }
 
@@ -36,6 +37,19 @@ class Container
     {
         return $this->database ?? $this->database = new Database(
             connection: $this->getPDO(),
+        );
+    }
+
+    /**
+     * @var NoticiasRepository $noticiasRepository
+     */
+
+    private readonly NoticiasRepository $noticiasRepository;
+
+    public function getNoticiasRepository(): NoticiasRepository
+    {
+        return $this->noticiasRepository ?? $this->noticiasRepository = new NoticiasRepository(
+            db: $this->getDatabase(),
         );
     }
 

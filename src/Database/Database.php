@@ -16,4 +16,9 @@ class Database
     {
         $this->connection = $connection;
     }
+
+    public function getConnection(): PDO
+    {
+        return $this->connection;
+    }
 }
