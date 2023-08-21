@@ -9,6 +9,7 @@ use App\Core\Renderer;
 use App\Database\Database;
 use App\Repository\CampeonatoRepository;
 use App\Repository\NoticiaRepository;
+use App\Repository\PartidaRepository;
 use PDO;
 
 class Container
@@ -63,6 +64,19 @@ class Container
     public function getCampeonatoRepository(): CampeonatoRepository
     {
         return $this->campeonatoRepository ?? $this->campeonatoRepository = new CampeonatoRepository(
+            db: $this->getDatabase(),
+        );
+    }
+
+    /**
+     * @var PartidaRepository $partidaRepository
+     */
+
+    private readonly PartidaRepository $partidaRepository;
+
+    public function getPartidaRepository(): PartidaRepository
+    {
+        return $this->partidaRepository ?? $this->partidaRepository = new PartidaRepository(
             db: $this->getDatabase(),
         );
     }

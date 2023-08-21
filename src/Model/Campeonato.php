@@ -15,22 +15,22 @@ class Campeonato
     const POSSUI_CLASSIFICACAO = 'possui_classificacao';
     const RODADA_ATUAL = 'rodada_atual';
 
-    public readonly int $id;
+    public readonly string $id;
     public readonly string $ano;
     public readonly string $nome;
     public readonly string $link;
     public readonly string $logo;
-    public readonly string $possuiClassificacao;
-    public readonly string $rodadaAtual;
+    public readonly bool $possuiClassificacao;
+    public readonly int $rodadaAtual;
 
     public function __construct(
-        int $id,
+        string $id,
         string $ano,
         string $nome,
         string $link,
         string $logo,
-        string $possuiClassificacao,
-        string $rodadaAtual,
+        bool $possuiClassificacao,
+        int $rodadaAtual,
     ) {
         $this->id = $id;
         $this->ano = $ano;
@@ -60,7 +60,6 @@ class Campeonato
             self::ID => $this->id,
             self::ANO => $this->ano,
             self::NOME => $this->nome,
-            self::LINK => $this->link,
             self::LINK => $this->link,
             self::LOGO => $this->logo,
             self::POSSUI_CLASSIFICACAO => $this->possuiClassificacao,
