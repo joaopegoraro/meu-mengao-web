@@ -10,63 +10,79 @@
 <body>
     <header role="banner">
         <div class="container">
-            <div class="main-nav-wrapper">
-                <nav class="main-nav" aria-label="Navegação principal">
-                    <ul role="list">
-                        <li><a href="/noticias">Notícias</a></li>
-                        <li><a href="/resultados">Resultados</a></li>
-                        <li><a href="/calendario">Calendário</a></li>
-                        <li><a href="/tabelas">Tabelas</a></li>
+            <div class="main-nav-wrapper | padding-block-600">
+                <nav class="main-nav | fw-bold" aria-label="Navegação principal">
+                    <ul role="list" class="main-nav-list">
+                        <li><a class="main-nav-link" href="/noticias">Notícias</a></li>
+                        <li><a class="main-nav-link" href="/resultados">Resultados</a></li>
+                        <li><a class="main-nav-link" href="/calendario">Calendário</a></li>
+                        <li><a class="main-nav-link" href="/tabelas">Tabelas</a></li>
                     </ul>
+                    <button class="main-nav-app-button">Baixe nosso aplicativo</button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <div class="container">
-        <div class="main-columns">
-            <section class="article-list">
-                <ul role="list" aria-label="Notícias">
-                    <?php for ($i = 0; $i < 10; $i++) : ?>
+    <main>
+        <div class="container">
+            <div class="main-columns">
+                <section class="article-list | flow" style="--flow-space: 2em">
+                    <h1 class="fs-primary-heading fw-bold">Notícias</h1>
+                    <ul class="flow" style="--flow-space: 3em" role="list" aria-label="Notícias">
+                        <?php for ($i = 0; $i < 10; $i++) : ?>
                         <li>
                             <article>
-                                <a href=<?= '/' . $i ?>>
-                                    <img class="article-image" src="https://colunadofla.com/wp-content/uploads/2023/08/elenco-time-jogadores-poster-flamengo-brasileirao.jpg" alt="Time do flamengo entrando em campo">
-                                    <h2 class="article-title">Notícia <?= $i ?></h2>
-                                    <p></p>
+                                <a class="article-link" href=<?= '/' . $i ?>>
+                                    <img class="article-image"
+                                        src="https://colunadofla.com/wp-content/uploads/2023/08/elenco-time-jogadores-poster-flamengo-brasileirao.jpg"
+                                        alt="Time do flamengo entrando em campo">
+                                    <div class="article-content">
+                                        <p>Globo Esporte</p>
+                                        <h2 class="fw-bold fs-secondary-heading" style="--flow-space: 0.5rem">
+                                            <?php if ($i % 2 == 0) {
+                                                    echo "Flamengo escolhe Cariacica para jogar contra o Athletico";
+                                                } else if ($i % 3 == 0) {
+                                                    echo "Flamengo";
+                                                } else {
+                                                    echo "Flamengo escolhe Cariacica para jogar contra o Athletico Flamengo escolhe Cariacica para jogar contra o Athletico";
+                                                }
+                                                ?>
+                                        </h2>
+                                    </div>
                                 </a>
                             </article>
                         </li>
-                    <?php endfor ?>
-                </ul>
-            </section>
-
-            <aside>
-                <section class="next-match-section">
-                    <h2 class="next-match-title">Próxima Partida</h2>
-                    <div class="next-match-card">
-                        <div class="next-match-card-content">
-                            <p class="home-team">Flamengo</p>
-                            <p class="away-team">Vasco</p>
-                        </div>
-                        <div class="next-match-card-footer">
-                            <p class="next-match-round">Série A Rodada 22</p>
-                            <p class="next-match-date">sábado 19:00</p>
-                        </div>
-                    </div>
+                        <?php endfor ?>
+                    </ul>
                 </section>
 
-                <section class="table-section">
-                    <h2 class="table-title">Tabela Brasileirão</h2>
-                    <table>
-                        <tr class="table-header-row">
-                            <th>#</th>
-                            <th>Classificação</th>
-                            <th>P</th>
-                            <th>J</th>
-                            <th>V</th>
-                        </tr>
-                        <?php for ($pos = 0; $pos < 10; $pos++) : ?>
+                <aside>
+                    <section class="next-match-section">
+                        <h2 class="fs-primary-heading fw-bold padding-block-600">Próxima Partida</h2>
+                        <div class="next-match-card">
+                            <div class="next-match-card-content">
+                                <p class="home-team">Flamengo</p>
+                                <p class="away-team">Vasco</p>
+                            </div>
+                            <div class="next-match-card-footer">
+                                <p class="next-match-round">Série A Rodada 22</p>
+                                <p class="next-match-date">sábado 19:00</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="table-section">
+                        <h2 class="table-title">Tabela Brasileirão</h2>
+                        <table>
+                            <tr class="table-header-row">
+                                <th>#</th>
+                                <th>Classificação</th>
+                                <th>P</th>
+                                <th>J</th>
+                                <th>V</th>
+                            </tr>
+                            <?php for ($pos = 0; $pos < 10; $pos++) : ?>
                             <tr class="table-body-row">
                                 <th><?= $pos ?></th>
                                 <th>Time <?= $pos ?></th>
@@ -74,11 +90,12 @@
                                 <th>15</th>
                                 <th><?= 15 - $pos ?></th>
                             </tr>
-                        <?php endfor ?>
-                    </table>
-                </section>
+                            <?php endfor ?>
+                        </table>
+                    </section>
+            </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="container">
