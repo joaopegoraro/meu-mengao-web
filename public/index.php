@@ -14,7 +14,7 @@ $container = new Container();
 $router = new Router();
 
 $router->get(
-    route: "/",
+    routes: ['/', '/noticias'],
     onMatch: fn ($request) => $container->getExampleController()->doStuff($request),
 );
 

@@ -20,5 +20,5 @@ interface Middleware
      * @return Response|null If it returns a response, it means the response should be sent
      *  and the request flow should be aborted.
      */
-    public function execute(Request &$request): Response|null;
+    public function execute(Request &$request): ?Response;
 }

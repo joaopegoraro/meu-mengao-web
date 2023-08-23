@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+:root {
+  --clr-primary: hsl(4, 73%, 44%);
+
+  --clr-dark: hsl(0, 0%, 0%);
+  --clr-light: hsl(0, 0%, 85%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --ff-primary: "Inter", sans-serif;
+
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-primary);
+
+  --fw-regular: 400;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+
+  --fs-200: 0.75rem;
+  --fs-300: 0.875rem;
+  --fs-400: 1rem;
+  --fs-500: 1.125rem;
+  --fs-600: 1.25rem;
+
+  --fs-body: var(--fs-300);
+  --fs-secondary-heading: var(--fs-500);
+  --fs-nav: var(--fs-400);
+
+  --size-100: 0.25rem;
+  --size-200: 0.5rem;
+  --size-300: 0.75rem;
+  --size-400: 1rem;
+  --size-500: 1.25rem;
+  --size-600: 1.5rem;
+  --size-700: 2rem;
+  --size-800: 3rem;
+  --size-900: 4rem;
+}
+
+@media (min-width: 50em) {
+  :root {
+    --fs-body: var(--fs-400);
+    --fs-secondary-heading: var(--fs-600);
+
+    --fs-nav: var(--fs-500);
+  }
+}
+
+/* https://piccalil.li/blog/a-modern-css-reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility classes */
+
+.text-primary {
+  color: var(--clr-primary);
+}
+.text-dark {
+  color: var(--clr-black);
+}
+.text-white {
+  color: var(--clr-white);
+}
+.text-light {
+  color: var(--clr-light);
+}
+
+.bg-primary {
+  background-color: var(--clr-primary);
+}
+.bg-dark {
+  background-color: var(--clr-dark);
+}
+.bg-white {
+  background-color: var(--clr-white);
+}
+.bg-light {
+  background-color: var(--clr-light);
+}
+
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+.fw-semi-bold {
+  font-weight: var(--fw-semi-bold);
+}
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+
+.fs-primary-heading {
+  font-size: var(--fs-primary-heading);
+}
+.fs-secondary-heading {
+  font-size: var(--fs-secondary-heading);
+}
+
+.fs-200 {
+  font-size: var(--fs-200);
+}
+.fs-300 {
+  font-size: var(--fs-300);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+.padding-block-900 {
+  padding-block: var(--size-900);
+}
+.padding-block-800 {
+  padding-block: var(--size-800);
+}
+.padding-block-700 {
+  padding-block: var(--size-700);
+}
+
+.container {
+  --max-width: 1500px;
+  --padding: 1.25rem;
+
+  width: min(var(--max-width), 100% - (var(--padding) * 2));
+  margin-inline: auto;
+  background-color: var(--clr-white);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.main-columns {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 50em) {
+  .main-columns {
+    grid-auto-flow: column;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* general styling */
+
+body {
+  font-size: var(--fs-body);
+  font-family: var(--ff-body);
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+}
