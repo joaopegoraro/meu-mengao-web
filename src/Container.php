@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Controller\ExampleController;
+use App\Controller\NoticiasController;
 use App\Core\Renderer;
 use App\Database\Database;
-use App\Model\Posicao;
 use App\Repository\CampeonatoRepository;
 use App\Repository\NoticiaRepository;
 use App\Repository\PartidaRepository;
@@ -110,13 +109,13 @@ class Container
     }
 
     /**
-     * @var ExampleController $exampleControlelr
+     * @var NoticiasController $exampleControlelr
      */
-    private readonly ExampleController $exampleController;
+    private readonly NoticiasController $noticiasController;
 
-    public function getExampleController(): ExampleController
+    public function getNoticiasController(): NoticiasController
     {
-        return $this->exampleController ?? $this->exampleController = new ExampleController(
+        return $this->noticiasController ?? $this->noticiasController = new NoticiasController(
             renderer: $this->getBaseRenderer(),
         );
     }

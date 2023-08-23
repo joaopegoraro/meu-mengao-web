@@ -15,7 +15,7 @@ $router = new Router();
 
 $router->get(
     routes: ['/', '/noticias'],
-    onMatch: fn ($request) => $container->getExampleController()->doStuff($request),
+    onMatch: fn ($request) => $container->getNoticiasController()->index($request),
 );
 
 http_response_code(404);

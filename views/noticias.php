@@ -40,14 +40,7 @@
                                     <div class="article-content">
                                         <p>Globo Esporte</p>
                                         <h2 class="fw-bold fs-secondary-heading" style="--flow-space: 0.5rem">
-                                            <?php if ($i % 2 == 0) {
-                                                    echo "Flamengo escolhe Cariacica para jogar contra o Athletico";
-                                                } else if ($i % 3 == 0) {
-                                                    echo "Flamengo";
-                                                } else {
-                                                    echo "Flamengo escolhe Cariacica para jogar contra o Athletico Flamengo escolhe Cariacica para jogar contra o Athletico";
-                                                }
-                                                ?>
+                                            Flamengo escolhe Cariacica para jogar contra o Athletico
                                         </h2>
                                     </div>
                                 </a>
@@ -57,23 +50,23 @@
                     </ul>
                 </section>
 
-                <aside>
-                    <section class="next-match-section">
-                        <h2 class="fs-primary-heading fw-bold padding-block-600">Próxima Partida</h2>
+                <aside class="flow" style="--flow-space: 2em">
+                    <section class="next-match-section | flow" style="--flow-space: 1em">
+                        <h2 class="fs-primary-heading fw-bold">Próxima Partida</h2>
                         <div class="next-match-card">
                             <div class="next-match-card-content">
-                                <p class="home-team">Flamengo</p>
-                                <p class="away-team">Vasco</p>
+                                <p>Flamengo</p>
+                                <p>Vasco</p>
                             </div>
                             <div class="next-match-card-footer">
-                                <p class="next-match-round">Série A Rodada 22</p>
+                                <p class="next-match-round">Série A<br />Rodada 22</p>
                                 <p class="next-match-date">sábado 19:00</p>
                             </div>
                         </div>
                     </section>
 
                     <section class="table-section">
-                        <h2 class="table-title">Tabela Brasileirão</h2>
+                        <h2 class="fs-primary-heading fw-bold">Tabela Brasileirão</h2>
                         <table>
                             <tr class="table-header-row">
                                 <th>#</th>

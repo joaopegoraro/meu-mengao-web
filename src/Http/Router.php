@@ -4,32 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use App\Core\Middleware;
-
 class Router
 {
-    /** @var Middleware[] $middlewares */
-    private readonly array $middlewares;
-
-    /**
-     * @param Middleware[] $defaultMiddlewares
-     */
-    public function __construct(array $defaultMiddlewares = [])
-    {
-        $this->middlewares = $defaultMiddlewares;
-    }
-
-    /**
-     * @param Middleware[] $middlewares
-     * @param callable(Router $router): void $useRouterWithMiddlewares
-     * @return void
-     */
-    public function withMiddlewares(array $middlewares, callable $useRouterWithMiddlewares): void
-    {
-        $routerWithMiddlewares = new Router($this->middlewares + $middlewares);
-        $useRouterWithMiddlewares($routerWithMiddlewares);
-    }
-
     /**
      * @param string[] $routes
      * @param callable(Request $request): Response $onMatch
@@ -124,12 +100,6 @@ class Router
                     queryParams: $queryParams,
                     contentType: !empty($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : ''
                 );
-
-                foreach ($this->middlewares as $middleware) {
-                    $response = $middleware->execute($request);
-                    // if the middleware returns a response, send the response (which also stops the script)
-                    $response?->send();
-                }
 
                 /* @var Response $response */
                 $response = $onMatch($request);

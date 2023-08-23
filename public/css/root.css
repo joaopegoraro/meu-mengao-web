@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 :root {
-  --clr-primary: hsl(4, 73%, 44%);
-  --clr-primary-light: hsl(4, 49%, 52%);
+  --clr-primary-400: hsl(4, 73%, 44%);
+  --clr-primary-200: hsl(4, 49%, 44%);
 
-  --clr-black: hsl(0, 0%, 0%);
-  --clr-dark: hsl(0, 0%, 15%);
-  --clr-light: hsl(0, 0%, 85%);
-  --clr-white: hsl(0, 0%, 100%);
+  --clr-dark-900: hsl(0, 0%, 0%);
+  --clr-dark-800: hsl(0, 0%, 15%);
+  --clr-light-300: hsl(0, 0%, 85%);
+  --clr-light-200: hsl(0, 0%, 92%);
+  --clr-light-100: hsl(0, 0%, 100%);
 
   --ff-primary: "Inter", sans-serif;
 
@@ -125,35 +126,23 @@ svg {
 }
 
 .text-primary {
-  color: var(--clr-primary);
+  color: var(--clr-primary-400);
 }
 .text-dark {
-  color: var(--clr-black);
-}
-.text-black {
-  color: var(--clr-black);
-}
-.text-white {
-  color: var(--clr-white);
+  color: var(--clr-dark-900);
 }
 .text-light {
-  color: var(--clr-light);
+  color: var(--clr-light-100);
 }
 
 .bg-primary {
-  background-color: var(--clr-primary);
+  background-color: var(--clr-primary-400);
 }
 .bg-dark {
-  background-color: var(--clr-dark);
-}
-.bg-black {
-  background-color: var(--clr-black);
-}
-.bg-white {
-  background-color: var(--clr-white);
+  background-color: var(--clr-dark-900);
 }
 .bg-light {
-  background-color: var(--clr-light);
+  background-color: var(--clr-light-100);
 }
 
 .fw-bold {
@@ -214,7 +203,7 @@ svg {
 
   width: min(var(--max-width), 100% - (var(--padding) * 2));
   margin-inline: auto;
-  background-color: var(--clr-white);
+  background-color: var(--clr-light-100);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -236,6 +225,6 @@ svg {
 body {
   font-size: var(--fs-body);
   font-family: var(--ff-body);
-  color: var(--clr-dark);
-  background-color: var(--clr-light);
+  color: var(--clr-dark-900);
+  background-color: var(--clr-light-300);
 }
