@@ -51,7 +51,9 @@
 
                 <aside class="flow" style="--flow-space: 2em">
                     <section class="next-match-section | flow" style="--flow-space: 1em">
-                        <h2 class="fs-primary-heading fw-bold">Próxima Partida</h2>
+                        <a href="/calendario" class="main-heading-link | fs-primary-heading fw-bold">
+                            Próxima Partida
+                        </a>
                         <div class="next-match-card">
                             <div class="next-match-card-content | flow" style="--flow-space: 1em">
                                 <p>Flamengo</p>
@@ -65,7 +67,9 @@
                     </section>
 
                     <section class="table-section">
-                        <h2 class="fs-primary-heading fw-bold">Tabela Brasileirão</h2>
+                        <a href="/tabelas" class="main-heading-link | fs-primary-heading fw-bold">
+                            Tabela Brasileirão
+                        </a>
                         <table>
                             <tr>
                                 <th class="position-header" colspan="3">Classificação</th>
