@@ -91,10 +91,10 @@
     <footer>
         <div class="container">
             <nav>
-                <ul role="list" aria-label="Informações do site">
-                    <li id="contact-nav"><a href="/">Contato</a> </li>
-                    <li id="source-nav"><a href="/">Código Fonte</a></li>
-                    <li id="app-nav"><a href="/">Aplicativo</a></li>
+                <ul class="footer-nav | fw-bold" role="list" aria-label="Informações do site">
+                    <li><a class="footer-nav-link" href="/">Contato</a> </li>
+                    <li><a class="footer-nav-link" href="/">Código Fonte</a></li>
+                    <li><a class="footer-nav-link" href="/">Aplicativo</a></li>
                 </ul>
             </nav>
         </div>

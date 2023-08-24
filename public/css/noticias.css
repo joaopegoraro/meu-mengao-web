@@ -35,7 +35,7 @@ header {
 
 .main-nav-link:hover,
 .main-nav-link:focus-within {
-  color: var(--clr-light-200);
+  color: var(--clr-light-300);
 }
 
 .main-nav-app-button {
@@ -73,6 +73,7 @@ header {
     "aside"
     "articles";
   gap: 1.25rem;
+  min-height: 50em;
   padding: 1.25rem;
 }
 
@@ -135,7 +136,7 @@ aside {
   }
 }
 
-/* PROXIMA PARTIDA */
+/* NEXT MATCH */
 
 .next-match-section {
   grid-area: next-match;
@@ -152,7 +153,7 @@ aside {
   padding: 1em;
   font-size: var(--fs-500);
   font-weight: var(--fw-bold);
-  background-color: var(--clr-light-200);
+  background-color: var(--clr-light-300);
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
 }
@@ -173,7 +174,7 @@ aside {
   }
 }
 
-/* TABELA BRASILEIRAO */
+/* TABLE */
 
 .table-section {
   grid-area: table;
@@ -190,7 +191,7 @@ th {
 }
 
 td {
-  background-color: var(--clr-light-200);
+  background-color: var(--clr-light-300);
   border-radius: 8px;
   padding: 0.5em 1em;
   text-align: center;
@@ -232,4 +233,37 @@ td {
   .games-header {
     display: none;
   }
+}
+
+/* FOOTER */
+
+footer {
+  width: 100%;
+  background-color: var(--clr-light-200);
+}
+
+footer > .container {
+  background-color: var(--clr-light-200);
+  box-shadow: none;
+}
+
+.footer-nav {
+  padding: 3em;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+}
+
+.footer-nav li {
+  text-align: center;
+}
+
+.footer-nav-link {
+  text-decoration: none;
+  color: var(--clr-dark-900);
+}
+
+:is(.footer-nav-link):hover,
+:is(.footer-nav-link):focus-within {
+  color: var(--clr-primary-400);
 }
