@@ -44,7 +44,7 @@
   --size-900: 4rem;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 62em) {
   :root {
     --fs-body: var(--fs-400);
     --fs-primary-heading: var(--fs-800);
@@ -199,7 +199,7 @@ svg {
 
 .container {
   --max-width: 1500px;
-  --padding: 1.25rem;
+  --padding: 0;
 
   width: min(var(--max-width), 100% - (var(--padding) * 2));
   margin-inline: auto;
@@ -207,16 +207,9 @@ svg {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
 }
 
-.main-columns {
-  display: grid;
-  gap: 1.25rem;
-  padding: 1.25rem;
-}
-
 @media (min-width: 50em) {
-  .main-columns {
-    grid-auto-flow: column;
-    grid-template-columns: 2fr 1fr;
+  .container {
+    --padding: 1.25rem;
   }
 }
 
