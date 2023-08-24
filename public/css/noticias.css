@@ -58,6 +58,7 @@ header {
   cursor: pointer;
   white-space: nowrap;
   text-align: center;
+  text-decoration: none;
   background-color: var(--clr-light-100);
   color: var(--clr-primary-400);
   border-radius: 100vmax;
@@ -66,6 +67,17 @@ header {
 .main-nav-app-button:hover,
 .main-nav-app-button:focus-within {
   color: var(--clr-primary-200);
+}
+
+.main-nav-app-button::before {
+  --size: 25px;
+  content: "";
+  margin-right: 1em;
+  vertical-align: -22%;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  background-image: url("../images/playstore-25.png");
 }
 
 @media (min-width: 50rem) {
@@ -118,6 +130,8 @@ article {
   --article-color: var(--clr-primary-400);
   --border-radius: 8px;
   width: min(100%, 800px);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .article-image {
@@ -136,6 +150,18 @@ article {
 .article-link {
   text-decoration: none;
   color: var(--clr-light-100);
+}
+
+.article-site::before {
+  --size: 20px;
+  content: "";
+  margin-right: 0.2em;
+  vertical-align: -20%;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  background-image: var(--icon-url);
+  background-size: contain;
 }
 
 article:hover,
@@ -190,6 +216,18 @@ aside {
   padding: 1em;
 }
 
+.team-home::before,
+.team-away::before {
+  --size: 30px;
+  content: "";
+  margin-right: 1em;
+  vertical-align: middle;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  background-image: var(--icon-url);
+}
+
 @media (min-width: 50rem) {
   .next-match-card {
     max-width: max(350px, 100%);
@@ -223,6 +261,17 @@ td {
   text-align: start;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.team-name::before {
+  --size: 20px;
+  content: "";
+  margin-right: 0.5em;
+  vertical-align: middle;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  background-image: var(--icon-url);
 }
 
 .position,
