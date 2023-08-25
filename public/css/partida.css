@@ -26,8 +26,13 @@
   padding: 1em;
 }
 
-.team-home::before,
-.team-away::before {
+.team {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.team-name::before {
   --size: 30px;
   content: "";
   margin-right: 1em;

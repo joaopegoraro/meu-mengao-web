@@ -1,13 +1,22 @@
+<?php
+
+/**
+ * @var string $title The \<head\> title of the page
+ * @var mixed[] $styles The stylesheet name (without the trailing extension '.css')
+ * @var mixed $content The main content of the page
+ */
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title><?= $title ?? "Meu Mengão - Agregador de notícias do Flamengo" ?></title>
+    <title><?= $title ? htmlspecialchars($title) : "Meu Mengão - Agregador de notícias do Flamengo" ?></title>
     <link rel="stylesheet" href="css/base.css">
     <?php foreach ($styles as $style) : ?>
-        <link rel="stylesheet" href=<?= "css/{$style}.css" ?>>
+        <link rel="stylesheet" href="css/<?= htmlspecialchars($style) ?>.css">
     <?php endforeach ?>
 </head>
 
