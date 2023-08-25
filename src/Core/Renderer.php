@@ -15,7 +15,7 @@ class Renderer
 
     public function render(
         string $view,
-        array $data,
+        array $data = [],
     ): string {
         foreach ($data as $key => $value) {
             $$key = $value;

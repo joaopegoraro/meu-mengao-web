@@ -13,6 +13,12 @@ class NoticiasController extends Controller
 
     public function index(Request $request): Response
     {
-        return $this->view("noticias");
+        return $this->view(
+            name: 'base',
+            data: [
+                'content' => $this->renderer->render('noticias'),
+                'styles' => ['noticias'],
+            ],
+        );
     }
 }
