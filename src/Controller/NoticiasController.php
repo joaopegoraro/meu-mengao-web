@@ -13,11 +13,18 @@ class NoticiasController extends Controller
 
     public function index(Request $request): Response
     {
+        $nextMatchView = $this->renderer->render(
+            view: 'components/partida',
+        );
+        $noticiasView = $this->renderer->render(
+            view: 'noticias',
+            data: ['nextMatch' => $nextMatchView],
+        );
         return $this->view(
             name: 'base',
             data: [
-                'content' => $this->renderer->render('noticias'),
-                'styles' => ['noticias'],
+                'content' => $noticiasView,
+                'styles' => ['noticias', 'partida'],
             ],
         );
     }

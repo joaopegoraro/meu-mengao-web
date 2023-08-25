@@ -1,0 +1,45 @@
+@import url("root.css");
+
+.match-card {
+  --border-radius: 8px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  width: 100%;
+}
+
+.match-card-content {
+  padding: 1em;
+  font-size: var(--fs-500);
+  font-weight: var(--fw-bold);
+  background-color: var(--clr-light-300);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+.match-card-footer {
+  display: flex;
+  text-align: start;
+  font-weight: var(--fw-semi-bold);
+  justify-content: space-between;
+  gap: 1em;
+  align-items: center;
+  padding: 1em;
+}
+
+.team-home::before,
+.team-away::before {
+  --size: 30px;
+  content: "";
+  margin-right: 1em;
+  vertical-align: middle;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  background-image: var(--icon-url);
+}
+
+@media (min-width: 50rem) {
+  .match-card {
+    max-width: max(350px, 100%);
+  }
+}

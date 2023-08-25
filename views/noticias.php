@@ -7,7 +7,7 @@
                     <?php for ($i = 0; $i < 10; $i++) : ?>
                     <li>
                         <article>
-                            <a class="article-link" href=<?= '/' . $i ?>>
+                            <a class="article-link" href='#'>
                                 <img class="article-image"
                                     src="https://colunadofla.com/wp-content/uploads/2023/08/elenco-time-jogadores-poster-flamengo-brasileirao.jpg"
                                     alt="Time do flamengo entrando em campo">
@@ -31,16 +31,7 @@
                     <a href="/calendario" class="main-heading-link | fs-primary-heading fw-bold">
                         Próxima Partida
                     </a>
-                    <div class="next-match-card">
-                        <div class="next-match-card-content | flow" style="--flow-space: 1em">
-                            <p class="team-home" style="--icon-url: url('../images/flamengo-30.png');">Flamengo</p>
-                            <p class="team-away" style="--icon-url: url('../images/flamengo-30.png');">Vasco</p>
-                        </div>
-                        <div class="next-match-card-footer">
-                            <p class="next-match-round">Série A<br />Rodada 22</p>
-                            <p class="next-match-date">sábado 19:00</p>
-                        </div>
-                    </div>
+                    <div class="next-match-card"><?= $nextMatch ?></div>
                 </section>
 
                 <section class="table-section">
