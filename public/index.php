@@ -18,4 +18,9 @@ $router->get(
     onMatch: fn ($request) => $container->getNoticiasController()->index($request),
 );
 
+$router->get(
+    routes: ['/resultados'],
+    onMatch: fn ($request) => $container->getResultadosController()->index($request),
+);
+
 http_response_code(404);

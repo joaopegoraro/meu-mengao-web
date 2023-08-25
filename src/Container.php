@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use App\Controller\NoticiasController;
+use App\Controller\ResultadosController;
 use App\Core\Renderer;
 use App\Database\Database;
 use App\Repository\CampeonatoRepository;
@@ -109,13 +110,25 @@ class Container
     }
 
     /**
-     * @var NoticiasController $exampleControlelr
+     * @var NoticiasController $noticiasController
      */
     private readonly NoticiasController $noticiasController;
 
     public function getNoticiasController(): NoticiasController
     {
         return $this->noticiasController ?? $this->noticiasController = new NoticiasController(
+            renderer: $this->getBaseRenderer(),
+        );
+    }
+
+    /**
+     * @var ResultadosController $resultadosController
+     */
+    private readonly ResultadosController $resultadosController;
+
+    public function getResultadosController(): ResultadosController
+    {
+        return $this->resultadosController ?? $this->resultadosController = new ResultadosController(
             renderer: $this->getBaseRenderer(),
         );
     }
