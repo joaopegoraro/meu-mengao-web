@@ -13,17 +13,17 @@ class NoticiasController extends Controller
 
     public function index(Request $request): Response
     {
-        $nextMatchView = $this->renderer->render(
-            view: 'components/partida',
-        );
-        $noticiasView = $this->renderer->render(
+        $nextMatch = $this->renderer->render('components/partida');
+
+        $noticias = $this->renderer->render(
             view: 'noticias',
-            data: ['nextMatch' => $nextMatchView],
+            data: ['nextMatch' => $nextMatch],
         );
+
         return $this->view(
             name: 'base',
             data: [
-                'content' => $noticiasView,
+                'content' => $noticias,
                 'styles' => ['noticias', 'partida'],
             ],
         );

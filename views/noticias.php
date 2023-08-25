@@ -31,7 +31,9 @@
                     <a href="/calendario" class="main-heading-link | fs-primary-heading fw-bold">
                         Próxima Partida
                     </a>
-                    <div class="next-match-card"><?= $nextMatch ?></div>
+                    <div class="next-match-card">
+                        <?= $nextMatch ?>
+                    </div>
                 </section>
 
                 <section class="table-section">
