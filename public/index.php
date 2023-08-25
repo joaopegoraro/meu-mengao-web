@@ -17,10 +17,17 @@ $router->get(
     routes: ['/', '/noticias'],
     onMatch: fn ($request) => $container->getNoticiasController()->index($request),
 );
-
 $router->get(
     routes: ['/resultados'],
     onMatch: fn ($request) => $container->getResultadosController()->index($request),
+);
+$router->get(
+    routes: ['/calendario'],
+    onMatch: fn ($request) => $container->getCalendarioController()->index($request),
+);
+$router->get(
+    routes: ['/tabelas'],
+    onMatch: fn ($request) => $container->getTabelasController()->index($request),
 );
 
 http_response_code(404);

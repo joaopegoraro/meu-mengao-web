@@ -34,7 +34,8 @@
         <div class="container">
             <nav>
                 <ul class="footer-nav | fw-bold" role="list" aria-label="Informações do site">
-                    <li><a class="footer-nav-link" href="https://github.com/joaopegoraro">Contato</a> </li>
+                    <li><a class="footer-nav-link" href="https://github.com/joaopegoraro" target="_blank">Contato</a>
+                    </li>
                     <li><a class="footer-nav-link" href="https://github.com/joaopegoraro/meu-mengao-web" target="_blank"">Código fonte</a> </li>
                     <li><a class=" footer-nav-link" href="https://play.google.com/store/apps/details?id=com.joaopegoraro.meu_mengao" target="_blank">Aplicativo</a></li>
                 </ul>

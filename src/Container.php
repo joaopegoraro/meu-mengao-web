@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Controller\CalendarioController;
 use App\Controller\NoticiasController;
 use App\Controller\ResultadosController;
+use App\Controller\TabelasController;
 use App\Core\Renderer;
 use App\Database\Database;
 use App\Repository\CampeonatoRepository;
@@ -129,6 +131,30 @@ class Container
     public function getResultadosController(): ResultadosController
     {
         return $this->resultadosController ?? $this->resultadosController = new ResultadosController(
+            renderer: $this->getBaseRenderer(),
+        );
+    }
+
+    /**
+     * @var CalendarioController $calendarioController
+     */
+    private readonly CalendarioController $calendarioController;
+
+    public function getCalendarioController(): CalendarioController
+    {
+        return $this->calendarioController ?? $this->calendarioController = new CalendarioController(
+            renderer: $this->getBaseRenderer(),
+        );
+    }
+
+    /**
+     * @var TabelasController $tabelasController
+     */
+    private readonly TabelasController $tabelasController;
+
+    public function getTabelasController(): TabelasController
+    {
+        return $this->tabelasController ?? $this->tabelasController = new TabelasController(
             renderer: $this->getBaseRenderer(),
         );
     }
