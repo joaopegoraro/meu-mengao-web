@@ -4,6 +4,7 @@ use App\Model\Partida;
 
 /**
  * @var Partida $partida
+ * @var bool $esconderCampeonato
  */
 ?>
 
@@ -19,11 +20,14 @@ use App\Model\Partida;
         </div>
     </div>
     <div class="match-card-footer">
-        <p class="match-round">
-            <?= htmlspecialchars($partida->campeonato) ?>
-            <br />
-            <?= htmlspecialchars($partida->rodadaName) ?>
-        </p>
+        <?php if (!$esconderCampeonato) : ?>
+            <p class="match-round">
+                <?= htmlspecialchars($partida->campeonato) ?>
+                <br />
+                <?= htmlspecialchars($partida->rodadaName) ?>
+            </p>
+        <?php endif ?>
+
         <p class="match-date">
             <?= htmlspecialchars($partida->data) ?>
         </p>

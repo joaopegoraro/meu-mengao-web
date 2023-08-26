@@ -50,8 +50,8 @@ class NoticiasController extends Controller
             golsSofridos: strval($n),
             saldoGols: strval($n),
             campeonatoId: 'serie-a',
-            campeonatoName: 'Série A',
-            campeonatoIndex: 0,
+            classificacaoName: 'Série A',
+            classificacaoIndex: 0,
         ), range(1, 10));
         $tabelaBrasileiraoView = $this->renderer->render(
             view: 'components/tabela',

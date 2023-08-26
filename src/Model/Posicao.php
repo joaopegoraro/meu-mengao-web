@@ -20,8 +20,8 @@ class Posicao
     const GOLS_SOFRIDOS = 'gols_sofridos';
     const SALDO_GOLS = 'saldo_gols';
     const CAMPEONATO_ID = 'campeonato_id';
-    const CAMPEONATO_NAME = 'campeonato_name';
-    const CAMPEONATO_INDEX = 'campeonato_index';
+    const CLASSIFICACAO_NAME = 'classificacao_name';
+    const CLASSIFICACAO_INDEX = 'classificacao_index';
 
     public readonly string $id;
     public readonly string $posicao;
@@ -36,8 +36,8 @@ class Posicao
     public readonly string $golsSofridos;
     public readonly string $saldoGols;
     public readonly string $campeonatoId;
-    public readonly string $campeonatoName;
-    public readonly int $campeonatoIndex;
+    public readonly string $classificacaoName;
+    public readonly int $classificacaoIndex;
 
     public function __construct(
         string $id,
@@ -53,8 +53,8 @@ class Posicao
         string $golsSofridos,
         string $saldoGols,
         string $campeonatoId,
-        string $campeonatoName,
-        int $campeonatoIndex,
+        string $classificacaoName,
+        int $classificacaoIndex,
     ) {
         $this->id = $id;
         $this->posicao = $posicao;
@@ -69,8 +69,8 @@ class Posicao
         $this->golsSofridos = $golsSofridos;
         $this->saldoGols = $saldoGols;
         $this->campeonatoId = $campeonatoId;
-        $this->campeonatoName = $campeonatoName;
-        $this->campeonatoIndex = $campeonatoIndex;
+        $this->classificacaoName = $classificacaoName;
+        $this->classificacaoIndex = $classificacaoIndex;
     }
 
     static function fromArray(array $array): Posicao
@@ -89,8 +89,8 @@ class Posicao
             golsSofridos: $array[self::GOLS_SOFRIDOS],
             saldoGols: $array[self::SALDO_GOLS],
             campeonatoId: $array[self::CAMPEONATO_ID],
-            campeonatoName: $array[self::CAMPEONATO_NAME],
-            campeonatoIndex: $array[self::CAMPEONATO_INDEX],
+            classificacaoName: $array[self::CLASSIFICACAO_NAME],
+            classificacaoIndex: $array[self::CLASSIFICACAO_INDEX],
         );
     }
 
@@ -110,8 +110,8 @@ class Posicao
             self::GOLS_SOFRIDOS => $this->golsSofridos,
             self::SALDO_GOLS => $this->saldoGols,
             self::CAMPEONATO_ID => $this->campeonatoId,
-            self::CAMPEONATO_NAME => $this->campeonatoName,
-            self::CAMPEONATO_INDEX => $this->campeonatoIndex,
+            self::CLASSIFICACAO_NAME => $this->classificacaoName,
+            self::CLASSIFICACAO_INDEX => $this->classificacaoIndex,
         ];
     }
 }

@@ -62,6 +62,10 @@ article {
   color: var(--clr-light-100);
 }
 
+.article-title {
+  max-width: 60ch;
+}
+
 .article-site::before {
   --size: 20px;
   content: "";
