@@ -25,58 +25,21 @@ class Router
      * @param callable(Request $request): Response $onMatch
      * @return void
      */
-    public function post(array $routes, callable $onMatch): void
-    {
-        if (strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') !== 0) {
-            return;
-        }
-
-        $this->on($routes, $onMatch);
-    }
-
-    /**
-     * @param string[] $routes
-     * @param callable(Request $request): Response $onMatch
-     * @return void
-     */
-    public function put(array $routes, callable $onMatch): void
-    {
-        if (strcasecmp($_SERVER['REQUEST_METHOD'], 'PUT') !== 0) {
-            return;
-        }
-
-        $this->on($routes, $onMatch);
-    }
-
-    /**
-     * @param string[] $routes
-     * @param callable(Request $request): Response $onMatch
-     * @return void
-     */
-    public function delete(array $routes, callable $onMatch): void
-    {
-        if (strcasecmp($_SERVER['REQUEST_METHOD'], 'DELETE') !== 0) {
-            return;
-        }
-
-        $this->on($routes, $onMatch);
-    }
-
-    /**
-     * @param string[] $routes
-     * @param callable(Request $request): Response $onMatch
-     * @return void
-     */
     private function on(array $routes, callable $onMatch): void
     {
         $url = $_SERVER['REQUEST_URI'];
 
         foreach ($routes as $route) {
-            // replaces route params with regex. ex: {id} is replaced with [\w-]+
+            // matches the $route and also any number of query parameters
+            $regex = '#^' . str_replace('/', '\/', $route) . '(\?[\w\-=&]*|\/?)$#';
+
+            // replaces and captures route params with regex. 
+            // ex: '/myroute/{id}' is replaced with '/myroute/[\w-]+', and the 'id' 
+            // can be captured with $matches['id'] 
             $regex = preg_replace(
                 pattern: "/\{([\w-]+)\}/",
                 replacement: "(?<$1>[\w\-]+)",
-                subject: '#^' . str_replace('/', '\/', $route) . '(\?[\w\-=&]*|\/?)$#'
+                subject: $regex,
             );
 
             $matches = [];
