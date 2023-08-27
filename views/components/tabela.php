@@ -18,8 +18,8 @@ use App\Model\Posicao;
         <tr>
             <th class="table-position-header" colspan="3">Classificação</th>
             <th class="table-points-header">P</th>
-            <th class="table-games-header">J</th>
-            <th class="table-wins-header">V</th>
+            <th class="table-games-header <?= $tabelaCompleta ? '' : 'optional-column' ?>">J</th>
+            <th class="table-wins-header <?= $tabelaCompleta ? '' : 'optional-column' ?>">V</th>
             <?php if ($tabelaCompleta) : ?>
                 <th class="table-draws-header">E</th>
                 <th class="table-losses-header">D</th>
@@ -32,11 +32,14 @@ use App\Model\Posicao;
             <tr>
                 <td class="table-position"><?= htmlspecialchars($posicao->posicao) ?></td>
                 <td class="table-team-name" colspan="2" style="--icon-url: url('<?= htmlspecialchars($posicao->escudoTime) ?>');">
-                    <?= htmlspecialchars($posicao->nomeTime) ?>
+                    <span class="table-team-initials"><?= substr($posicao->nomeTime, 0, 3) ?></span>
+                    <span class="table-team-non-initials"><?= substr($posicao->nomeTime, 3) ?></span>
                 </td>
                 <td class="table-points"><?= htmlspecialchars($posicao->pontos) ?></td>
-                <td class="table-games"><?= htmlspecialchars($posicao->jogos) ?></td>
-                <td class="table-wins"><?= htmlspecialchars($posicao->vitorias) ?></td>
+                <td class="table-games <?= $tabelaCompleta ? '' : 'optional-column' ?>">
+                    <?= htmlspecialchars($posicao->jogos) ?></td>
+                <td class="table-wins <?= $tabelaCompleta ? '' : 'optional-column' ?>">
+                    <?= htmlspecialchars($posicao->vitorias) ?></td>
                 <?php if ($tabelaCompleta) : ?>
                     <td class="table-draws"><?= htmlspecialchars($posicao->empates) ?></td>
                     <td class="table-losses"><?= htmlspecialchars($posicao->derrotas) ?></td>

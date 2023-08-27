@@ -63,7 +63,7 @@ article {
 }
 
 .article-title {
-  max-width: 60ch;
+  max-width: 40ch;
 }
 
 .article-site::before {

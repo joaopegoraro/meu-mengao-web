@@ -22,7 +22,7 @@
 @media (min-width: 50em) {
   .main {
     grid-template-areas: "tables rounds";
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: auto minmax(350px, 30%);
   }
 
   .mobile-ruler {
@@ -34,6 +34,70 @@
 
 .championship-tables {
   grid-area: tables;
+}
+
+.championship-tables {
+  font-size: 1rem;
+}
+
+td:not(.table-team-name) {
+  padding-inline: 0.3em;
+}
+
+.table-team-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .championship-tables {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .table-team-name {
+    text-align: center !important;
+    padding-inline: 0.5em !important;
+  }
+  .table-team-non-initials {
+    display: none;
+    max-width: 5ch;
+    text-overflow: clip;
+  }
+  .table-team-initials {
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 799px) {
+  .table-team-name {
+    text-align: start !important;
+    max-width: 100%;
+    padding-inline: 0.5em 1em;
+  }
+  .table-team-non-initials {
+    display: inline;
+    max-width: 100%;
+  }
+  .table-team-initials {
+    text-transform: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .table-team-name {
+    text-align: center !important;
+    padding-inline: 0.5em !important;
+  }
+  .table-team-non-initials {
+    display: none;
+    max-width: 5ch;
+    text-overflow: clip;
+  }
+  .table-team-initials {
+    text-transform: uppercase;
+  }
 }
 
 /* TABLE DROPDOWN */
