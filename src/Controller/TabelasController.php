@@ -24,6 +24,7 @@ class TabelasController extends Controller
                 logo: '',
                 possuiClassificacao: true,
                 rodadaAtual: $n,
+                rodadaFinal: $n * 5,
             ),
             range(1, 4)
         );
@@ -87,7 +88,11 @@ class TabelasController extends Controller
             ), range(1, 20 - (4 * intval($campeonato->id))));
             $tabelaView = $this->renderer->render(
                 view: 'components/tabela',
-                data: ['posicoes' => $posicoes],
+                data: [
+                    'posicoes' => $posicoes,
+                    'classificacaoName' => 'Grupo ' . $index,
+                    'tabelaCompleta' => true,
+                ],
             );
             array_push($tabelasViews, $tabelaView);
         }
@@ -100,12 +105,14 @@ class TabelasController extends Controller
                 'tabelaViews' => $tabelasViews,
                 'rodadaViews' => $rodadasViews,
                 'rodadaIndex' => $rodadaIndex,
-                'rodadaName' => 'Rodada ' . $rodadaIndex,
+                'rodadaName' => 'Rodada ' . $rodadaIndex + 1,
+                'rodadaFinal' => $campeonato->rodadaFinal,
             ],
         );
         return $this->view(
             name: 'base',
             data: [
+                'title' => 'Tabelas',
                 'content' => $tabelasPageView,
                 'styles' => ['tabelas', 'partida', 'tabela'],
             ],

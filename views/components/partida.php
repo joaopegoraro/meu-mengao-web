@@ -19,7 +19,7 @@ use App\Model\Partida;
             <p class="team-score"><?= htmlspecialchars($partida->golsFora) ?></p>
         </div>
     </div>
-    <div class="match-card-footer">
+    <div class="match-card-footer" <?= $esconderCampeonato ? "role='center'" : '' ?>>
         <?php if (!$esconderCampeonato) : ?>
             <p class="match-round">
                 <?= htmlspecialchars($partida->campeonato) ?>

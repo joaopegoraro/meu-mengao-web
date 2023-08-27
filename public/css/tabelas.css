@@ -7,16 +7,26 @@
   grid-template-areas:
     "tables"
     "rounds";
-  gap: 1.25em;
+  gap: 3.25em;
   min-height: 50em;
   padding: var(--main-padding);
+}
+
+.table-divider,
+.mobile-ruler {
+  width: 90%;
+  margin-inline: auto;
+  color: var(--clr-light-200);
 }
 
 @media (min-width: 50em) {
   .main {
     grid-template-areas: "tables rounds";
     grid-template-columns: 2fr 1fr;
-    gap: 3.25em;
+  }
+
+  .mobile-ruler {
+    display: none;
   }
 }
 
@@ -77,4 +87,46 @@
 
 .championship-rounds {
   grid-area: rounds;
+}
+
+/* ROUND SELECTOR */
+
+.round-selector {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+}
+
+.round-title {
+  text-align: center;
+}
+
+.arrow-right {
+  text-align: end;
+}
+
+.arrow-right::after {
+  content: "";
+  border: solid var(--clr-dark-800);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 0.5em;
+
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.arrow-left {
+  text-align: start;
+}
+
+.arrow-left::before {
+  content: "";
+  border: solid var(--clr-dark-800);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 0.5em;
+
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }

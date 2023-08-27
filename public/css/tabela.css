@@ -43,7 +43,17 @@ td {
   .table-wins,
   .table-wins-header,
   .table-games,
-  .table-games-header {
+  .table-games-header,
+  .table-draws,
+  .table-draws-header,
+  .table-losses,
+  .table-losses-header,
+  .table-goals-scored,
+  .table-goals-scored-header,
+  .table-goals-conceived,
+  .table-goals-conceived-header,
+  .table-goal-diff,
+  .table-goal-diff-header {
     display: none;
   }
 }
@@ -52,7 +62,17 @@ td {
   .table-wins,
   .table-wins-header,
   .table-games,
-  .table-games-header {
+  .table-games-header,
+  .table-draws,
+  .table-draws-header,
+  .table-losses,
+  .table-losses-header,
+  .table-goals-scored,
+  .table-goals-scored-header,
+  .table-goals-conceived,
+  .table-goals-conceived-header,
+  .table-goal-diff,
+  .table-goal-diff-header {
     display: table-cell;
   }
 }
@@ -61,7 +81,17 @@ td {
   .table-wins,
   .table-wins-header,
   .table-games,
-  .table-games-header {
+  .table-games-header,
+  .table-draws,
+  .table-draws-header,
+  .table-losses,
+  .table-losses-header,
+  .table-goals-scored,
+  .table-goals-scored-header,
+  .table-goals-conceived,
+  .table-goals-conceived-header,
+  .table-goal-diff,
+  .table-goal-diff-header {
     display: none;
   }
 }
