@@ -2,8 +2,8 @@ CREATE TABLE
     partidas(
         id VARCHAR(255) PRIMARY KEY,
         data VARCHAR(255) NOT NULL,
-        timeCasa VARCHAR(255) NOT NULL,
-        timeFora VARCHAR(255) NOT NULL,
+        time_casa VARCHAR(255) NOT NULL,
+        time_fora VARCHAR(255) NOT NULL,
         escudo_casa TEXT NOT NULL,
         escudo_fora TEXT NOT NULL,
         gols_casa VARCHAR(255) NOT NULL,
