@@ -7,5 +7,5 @@ CREATE TABLE
         logo TEXT,
         possui_classificacao BOOLEAN NOT NULL DEFAULT FALSE,
         rodada_atual INT NOT NULL DEFAULT 0,
-        rodada_final INT NOT NULL DEFAULT 100,
+        rodada_final INT NOT NULL DEFAULT 100
     );
