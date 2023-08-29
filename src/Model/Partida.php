@@ -78,7 +78,7 @@ class Partida
             golsFora: $array[self::GOLS_FORA],
             campeonato: $array[self::CAMPEONATO],
             campeonatoId: $array[self::CAMPEONATO_ID],
-            partidaFlamengo: $array[self::PARTIDA_FLAMENGO],
+            partidaFlamengo: $array[self::PARTIDA_FLAMENGO] == 1,
             rodadaName: $array[self::RODADA_NAME],
             rodadaIndex: $array[self::RODADA_INDEX],
         );

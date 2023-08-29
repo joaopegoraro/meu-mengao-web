@@ -120,6 +120,9 @@ class Container
     {
         return $this->noticiasController ?? $this->noticiasController = new NoticiasController(
             renderer: $this->getBaseRenderer(),
+            noticiaRepository: $this->getNoticiaRepository(),
+            partidaRepository: $this->getPartidaRepository(),
+            posicaoRepository: $this->getPosicaoRepository(),
         );
     }
 
@@ -132,6 +135,7 @@ class Container
     {
         return $this->resultadosController ?? $this->resultadosController = new ResultadosController(
             renderer: $this->getBaseRenderer(),
+            partidaRepository: $this->getPartidaRepository(),
         );
     }
 
@@ -144,6 +148,7 @@ class Container
     {
         return $this->calendarioController ?? $this->calendarioController = new CalendarioController(
             renderer: $this->getBaseRenderer(),
+            partidaRepository: $this->getPartidaRepository(),
         );
     }
 
@@ -156,6 +161,9 @@ class Container
     {
         return $this->tabelasController ?? $this->tabelasController = new TabelasController(
             renderer: $this->getBaseRenderer(),
+            campeonatoRepository: $this->getCampeonatoRepository(),
+            partidaRepository: $this->getPartidaRepository(),
+            posicaoRepository: $this->getPosicaoRepository(),
         );
     }
 }

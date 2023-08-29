@@ -26,13 +26,15 @@ class PartidaRepository
         $data = Partida::DATA;
         $partidaFlamengo = Partida::PARTIDA_FLAMENGO;
         $sql = "SELECT * FROM {$table} 
-                WHERE {$partidaFlamengo} = ? 
-                AND {$data} >= ? 
-                LIMIT 1 
-                ORDER BY {$data} ASC";
-        $stmt = $conn->query($sql);
-        $stmt->bindParam(1, true);
-        $stmt->bindParam(2, time());
+                WHERE {$partidaFlamengo} = :partidaFlamengo
+                AND {$data} >= :data
+                ORDER BY {$data} ASC
+                LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'partidaFlamengo' => true,
+            'data' => time(),
+        ]);
         while ($row = $stmt->fetch()) {
             $partida = Partida::fromArray($row);
         }
@@ -52,12 +54,14 @@ class PartidaRepository
         $data = Partida::DATA;
         $partidaFlamengo = Partida::PARTIDA_FLAMENGO;
         $sql = "SELECT * FROM {$table} 
-                WHERE {$partidaFlamengo} = ? 
-                AND {$data} < ? 
+                WHERE {$partidaFlamengo} = :partidaFlamengo 
+                AND {$data} < :data 
                 ORDER BY {$data} DESC";
-        $stmt = $conn->query($sql);
-        $stmt->bindParam(1, true);
-        $stmt->bindParam(2, time());
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'partidaFlamengo' => true,
+            'data' => time(),
+        ]);
         while ($row = $stmt->fetch()) {
             array_push($partidas, Partida::fromArray($row));
         }
@@ -77,12 +81,14 @@ class PartidaRepository
         $data = Partida::DATA;
         $partidaFlamengo = Partida::PARTIDA_FLAMENGO;
         $sql = "SELECT * FROM {$table} 
-                WHERE {$partidaFlamengo} = ? 
-                AND {$data} >= ? 
+                WHERE {$partidaFlamengo} = :partidaFlamengo
+                AND {$data} >= :data 
                 ORDER BY {$data} ASC";
-        $stmt = $conn->query($sql);
-        $stmt->bindParam(1, true);
-        $stmt->bindParam(2, time());
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'partidaFlamengo' => true,
+            'data' => time(),
+        ]);
         while ($row = $stmt->fetch()) {
             array_push($partidas, Partida::fromArray($row));
         }
@@ -102,9 +108,9 @@ class PartidaRepository
         $table = Partida::TABLE;
         $campeonatoIdColumn = Partida::CAMPEONATO_ID;
         $sql = "SELECT * FROM {$table} 
-                WHERE {$campeonatoIdColumn} = ?";
-        $stmt = $conn->query($sql);
-        $stmt->bindParam(1, $campeonatoId);
+                WHERE {$campeonatoIdColumn} = :campeonatoId";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['campeonatoId' => $campeonatoId]);
         while ($row = $stmt->fetch()) {
             array_push($partidas, Partida::fromArray($row));
         }
@@ -126,11 +132,13 @@ class PartidaRepository
         $campeonatoIdColumn = Partida::CAMPEONATO_ID;
         $rodadaIndexColumn = Partida::RODADA_INDEX;
         $sql = "SELECT * FROM {$table} 
-                WHERE {$campeonatoIdColumn} = ? 
-                AND {$rodadaIndexColumn} = ?";
-        $stmt = $conn->query($sql);
-        $stmt->bindParam(1, $campeonatoId);
-        $stmt->bindParam(2, $rodadaIndex);
+                WHERE {$campeonatoIdColumn} = :campeonatoId 
+                AND {$rodadaIndexColumn} = :rodadaIndex";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'campeonatoId' => $campeonatoId,
+            'rodadaIndex' => $rodadaIndex,
+        ]);
         while ($row = $stmt->fetch()) {
             array_push($partidas, Partida::fromArray($row));
         }

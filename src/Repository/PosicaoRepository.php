@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Database\Database;
-use App\Model\Partida;
 use App\Model\Posicao;
 
 class PosicaoRepository
@@ -20,7 +19,7 @@ class PosicaoRepository
 
 
     /**
-     * @return Partida[]
+     * @return Posicao[]
      */
     public function findWithCampeonatoId(string $campeonatoId): array
     {
