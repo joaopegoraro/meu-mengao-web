@@ -3,7 +3,7 @@ CREATE TABLE
         id VARCHAR(255) PRIMARY KEY,
         posicao VARCHAR(255) NOT NULL,
         nome_time VARCHAR(255) NOT NULL,
-        escudo_time TEXT NOT NULL,
+        escudo_time MEDIUMBLOB NOT NULL,
         pontos VARCHAR(255) NOT NULL,
         jogos VARCHAR(255) NOT NULL,
         vitorias VARCHAR(255) NOT NULL,
