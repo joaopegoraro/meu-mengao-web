@@ -26,6 +26,7 @@ class CalendarioController extends Controller
     public function index(Request $request): Response
     {
         $partidas = $this->partidaRepository->findCalendario();
+        $partidasView = [];
         foreach ($partidas as $partida) {
             $partidaView = $this->renderer->render(
                 view: 'components/partida',

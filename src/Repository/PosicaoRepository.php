@@ -29,9 +29,9 @@ class PosicaoRepository
         $table = Posicao::TABLE;
         $campeonatoIdColumn = Posicao::CAMPEONATO_ID;
         $sql = "SELECT * FROM {$table} 
-                WHERE {$campeonatoIdColumn} = ?";
-        $stmt = $conn->query($sql);
-        $stmt->bindParam(1, $campeonatoId);
+                WHERE {$campeonatoIdColumn} = :campeonatoId";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['campeonatoId' => $campeonatoId]);
         while ($row = $stmt->fetch()) {
             array_push($posicoes, Posicao::fromArray($row));
         }

@@ -41,8 +41,8 @@ class CampeonatoRepository
 
         $table = Campeonato::TABLE;
         $idColumn = Campeonato::ID;
-        $stmt = $conn->query("SELECT * FROM {$table} WHERE {$idColumn} = ? LIMIT 1");
-        $stmt->bindParam(1, $id);
+        $stmt = $conn->prepare("SELECT * FROM {$table} WHERE {$idColumn} = :id LIMIT 1");
+        $stmt->execute(['id' => $id]);
         while ($row = $stmt->fetch()) {
             $campeonato = Campeonato::fromArray($row);
         }
