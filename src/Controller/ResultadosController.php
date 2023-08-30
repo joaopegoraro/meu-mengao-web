@@ -30,7 +30,10 @@ class ResultadosController extends Controller
         foreach ($partidas as $partida) {
             $partidaView = $this->renderer->render(
                 view: 'components/partida',
-                data: ['partida' => $partida],
+                data: [
+                    'partida' => $partida,
+                    'mostrarPlacar' => true,
+                ],
             );
             array_push($partidasView, $partidaView);
         }

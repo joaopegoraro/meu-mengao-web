@@ -19,14 +19,14 @@ use App\Model\Noticia;
                     <li>
                         <article>
                             <a class="article-link" href="<?= htmlspecialchars($noticia->link) ?>">
-                                <img class="article-image" src="<?= htmlspecialchars($noticia->foto) ?>" alt="">
+                                <img class="article-image" src="<?= $noticia->foto ?>" alt="">
                                 <div class="article-content | flow" style="--flow-space: 0.2em">
                                     <p class="article-site | fw-semi-bold"
-                                        style="--icon-url: url('<?= htmlspecialchars($noticia->logoSite) ?>');">
-                                        <?= htmlspecialchars($noticia->site) ?>
+                                        style="--icon-url: url('data:image/png;base64,<?= $noticia->logoSite ?>');">
+                                        <?= $noticia->site ?>
                                     </p>
                                     <h2 class="article-title | fw-bold fs-secondary-heading">
-                                        <?= htmlspecialchars($noticia->titulo) ?>
+                                        <?= $noticia->titulo ?>
                                     </h2>
                                 </div>
                             </a>

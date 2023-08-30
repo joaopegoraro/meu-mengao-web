@@ -55,6 +55,7 @@ class TabelasController extends Controller
                 data: [
                     'partida' => $partida,
                     'esconderCampeonato' => true,
+                    'mostrarPlacar' => true,
                 ],
             );
             array_push($rodadasViews, $partidaView);
@@ -63,6 +64,9 @@ class TabelasController extends Controller
         $posicoes = $this->posicaoRepository->findWithCampeonatoId($campeonatoSelecionado->id);
         $tabelas = [];
         foreach ($posicoes as $posicao) {
+            if (!$tabelas[$posicao->classificacaoName]) {
+                $tabelas[$posicao->classificacaoName] = [];
+            }
             array_push($tabelas[$posicao->classificacaoName], $posicao);
         }
 

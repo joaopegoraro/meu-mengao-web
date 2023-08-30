@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use DateTime;
+use IntlDateFormatter;
+
 class Partida
 {
     const TABLE = 'partidas';
@@ -65,7 +68,7 @@ class Partida
         $this->rodadaIndex = $rodadaIndex;
     }
 
-    static function fromArray(array $array): Partida
+    static public function fromArray(array $array): Partida
     {
         return new Partida(
             id: $array[self::ID],
@@ -84,7 +87,7 @@ class Partida
         );
     }
 
-    function toArray(): array
+    public function toArray(): array
     {
         return [
             self::ID => $this->id,
@@ -101,5 +104,41 @@ class Partida
             self::RODADA_NAME => $this->rodadaName,
             self::RODADA_INDEX => $this->rodadaIndex,
         ];
+    }
+
+    public function getReadableDate(): string
+    {
+        $dateSeconds = (int) $this->data / 1000;
+        $now = new DateTime('now');
+        $dateTime = new DateTime('@' . $dateSeconds);
+        $dateTime->setTime(0, 0, 0, 0);
+
+        $fmt = datefmt_create(
+            'pt_BR',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            timezone: 'America/Sao_Paulo',
+        );
+
+        $dayDifference = (int) $now->diff($dateTime)->format("%R%a"); // Extract days count in interval
+        switch ($dayDifference) {
+            case -1:
+                $fmt->setPattern("'Ontem, às 'H:mm");
+                break;
+            case 0:
+                $fmt->setPattern("'Hoje, às 'H:mm");
+                break;
+            case 1:
+                $fmt->setPattern("'Amanhã, às 'H:mm");
+                break;
+            default:
+                if (abs($dayDifference) < 7) {
+                    $fmt->setPattern("EEEE', às 'H:mm");
+                } else {
+                    $fmt->setPattern("dd/MM', às 'H:mm");
+                }
+        }
+
+        return $fmt->format($dateSeconds);
     }
 }

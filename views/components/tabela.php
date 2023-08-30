@@ -30,22 +30,21 @@ use App\Model\Posicao;
         </tr>
         <?php foreach ($posicoes as $posicao) : ?>
             <tr>
-                <td class="table-position"><?= htmlspecialchars($posicao->posicao) ?></td>
-                <td class="table-team-name" colspan="2" style="--icon-url: url('<?= htmlspecialchars($posicao->escudoTime) ?>');">
-                    <span class="table-team-initials"><?= substr($posicao->nomeTime, 0, 3) ?></span>
-                    <span class="table-team-non-initials"><?= substr($posicao->nomeTime, 3) ?></span>
+                <td class="table-position"><?= $posicao->posicao ?></td>
+                <td class="table-team-name" colspan="2" style="--icon-url: url('data:image/png;base64,<?= $posicao->escudoTime ?>');">
+                    <span class="table-team-initials"><?= mb_substr($posicao->nomeTime, 0, 3, encoding: 'utf-8') ?></span><span class="table-team-non-initials"><?= mb_substr($posicao->nomeTime, 3, encoding: 'utf-8') ?></span>
                 </td>
-                <td class="table-points"><?= htmlspecialchars($posicao->pontos) ?></td>
+                <td class="table-points"><?= $posicao->pontos ?></td>
                 <td class="table-games <?= $tabelaCompleta ? '' : 'optional-column' ?>">
-                    <?= htmlspecialchars($posicao->jogos) ?></td>
+                    <?= $posicao->jogos ?></td>
                 <td class="table-wins <?= $tabelaCompleta ? '' : 'optional-column' ?>">
-                    <?= htmlspecialchars($posicao->vitorias) ?></td>
+                    <?= $posicao->vitorias ?></td>
                 <?php if ($tabelaCompleta) : ?>
-                    <td class="table-draws"><?= htmlspecialchars($posicao->empates) ?></td>
-                    <td class="table-losses"><?= htmlspecialchars($posicao->derrotas) ?></td>
-                    <td class="table-goals-scored"><?= htmlspecialchars($posicao->golsFeitos) ?></td>
-                    <td class="table-goals-conceived"><?= htmlspecialchars($posicao->golsSofridos) ?></td>
-                    <td class="table-goal-diff"><?= htmlspecialchars($posicao->saldoGols) ?></td>
+                    <td class="table-draws"><?= $posicao->empates ?></td>
+                    <td class="table-losses"><?= $posicao->derrotas ?></td>
+                    <td class="table-goals-scored"><?= $posicao->golsFeitos ?></td>
+                    <td class="table-goals-conceived"><?= $posicao->golsSofridos ?></td>
+                    <td class="table-goal-diff"><?= $posicao->saldoGols ?></td>
                 <?php endif ?>
             </tr>
         <?php endforeach ?>

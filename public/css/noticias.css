@@ -39,13 +39,14 @@
 article {
   --article-color: var(--clr-primary-400);
   --border-radius: 8px;
-  width: min(100%, 800px);
   border-radius: var(--border-radius);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .article-image {
   width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
 }
@@ -63,7 +64,7 @@ article {
 }
 
 .article-title {
-  max-width: 40ch;
+  max-width: 55ch;
 }
 
 .article-site::before {

@@ -40,7 +40,7 @@ class NoticiasController extends Controller
         );
 
 
-        $posicoes = $this->posicaoRepository->findWithCampeonatoId('serie-a');
+        $posicoes = $this->posicaoRepository->findWithCampeonatoId('serie-a', limit: 10);
         $tabelaBrasileiraoView = $this->renderer->render(
             view: 'components/tabela',
             data: ['posicoes' => $posicoes],
