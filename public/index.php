@@ -14,6 +14,10 @@ $app = new App(rootDir: dirname(__DIR__));
 $container = new Container();
 $router = new Router();
 
+/*
+    WEB ROUTES
+*/
+
 $router->get(
     routes: ['/', '/noticias'],
     onMatch: fn ($request) => $container->getNoticiasController()->index($request),
@@ -30,6 +34,63 @@ $router->get(
     routes: ['/tabelas'],
     onMatch: fn ($request) => $container->getTabelasController()->index($request),
 );
+
+/*
+    API ROUTES
+*/
+
+$router->get(
+    routes: ['/api/noticias'],
+    onMatch: function ($request) use ($container) {
+        return $container->getNoticiasApiController()->findAll($request);
+    },
+);
+$router->get(
+    routes: ['/api/posicao/campeonato/{campeonatoId}'],
+    onMatch: function ($request) use ($container) {
+        return $container->getPosicoesApiController()->findAllWithCampeonatoId($request);
+    },
+);
+$router->get(
+    routes: ['/api/campeonatos'],
+    onMatch: function ($request) use ($container) {
+        return $container->getCampeonatosApiController()->findAll($request);
+    },
+);
+$router->get(
+    routes: ['/api/partidas/proxima'],
+    onMatch: function ($request) use ($container) {
+        return $container->getPartidasApiController()->findProximaPartida($request);
+    },
+);
+$router->get(
+    routes: ['/api/partidas/resultados'],
+    onMatch: function ($request) use ($container) {
+        return $container->getPartidasApiController()->findResultados($request);
+    },
+);
+$router->get(
+    routes: ['/api/partidas/calendario'],
+    onMatch: function ($request) use ($container) {
+        return $container->getPartidasApiController()->findCalendario($request);
+    },
+);
+$router->get(
+    routes: ['/api/partidas/campeonato/{campeonatoId}/{rodadaIndex}'],
+    onMatch: function ($request) use ($container) {
+        return $container->getPartidasApiController()->findAllWithRodadaIndex($request);
+    },
+);
+$router->get(
+    routes: ['/api/partidas/campeonato/{campeonatoId}'],
+    onMatch: function ($request) use ($container) {
+        return $container->getPartidasApiController()->findAllWithCampeonatoId($request);
+    },
+);
+
+/*
+    404
+*/
 
 // if url starts with '/api', only return an empty response with 404, without any html
 if (preg_match('/^\/api\/?.*/', $_SERVER['REQUEST_URI'])) {

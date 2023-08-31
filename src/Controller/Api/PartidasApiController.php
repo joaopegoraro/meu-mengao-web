@@ -35,7 +35,7 @@ class PartidasApiController extends ApiController
     {
     }
 
-    public function findAllCampeonatoId(Request $request): Response
+    public function findAllWithCampeonatoId(Request $request): Response
     {
     }
 }
