@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Meu Mengão - <?= $title ? htmlspecialchars($title) : "Agregador de notícias do Flamengo" ?></title>
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
     <link rel="stylesheet" href="css/base.css">
     <?php foreach ($styles as $style) : ?>
         <link rel="stylesheet" href="css/<?= htmlspecialchars($style) ?>.css">
