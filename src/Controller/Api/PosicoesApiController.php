@@ -7,6 +7,7 @@ namespace App\Controller\Api;
 use App\Core\ApiController;
 use App\Http\Request;
 use App\Http\Response;
+use App\Model\Posicao;
 use App\Repository\PosicaoRepository;
 
 class PosicoesApiController extends ApiController
@@ -24,7 +25,6 @@ class PosicoesApiController extends ApiController
         $campeonatoId = $request->routeParams['campeonatoId'];
         if (!$campeonatoId) {
             return $this->respondError(
-                status: 400,
                 detail: 'O campeonatoId precisa ser um id válido',
             );
         }
@@ -32,9 +32,14 @@ class PosicoesApiController extends ApiController
         $posicoes = $this->posicaoRepository->findWithCampeonatoId($campeonatoId);
 
         if (sizeof($posicoes) == 0) {
-            return $this->respond(status: 204);
+            return $this->respondError(status: 404);
         }
 
-        return $this->respond(data: $posicoes);
+        return $this->respond(
+            data: array_map(
+                fn (Posicao $posicao) => $posicao->toArray(),
+                $posicoes,
+            ),
+        );
     }
 }

@@ -7,6 +7,7 @@ namespace App\Controller\Api;
 use App\Core\ApiController;
 use App\Http\Request;
 use App\Http\Response;
+use App\Model\Campeonato;
 use App\Repository\CampeonatoRepository;
 
 class CampeonatosApiController extends ApiController
@@ -27,6 +28,11 @@ class CampeonatosApiController extends ApiController
             return $this->respond(status: 204);
         }
 
-        return $this->respond(data: $campeonatos);
+        return $this->respond(
+            data: array_map(
+                fn (Campeonato $campeonato) => $campeonato->toArray(),
+                $campeonatos,
+            ),
+        );
     }
 }

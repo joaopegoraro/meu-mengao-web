@@ -7,6 +7,7 @@ namespace App\Controller\Api;
 use App\Core\ApiController;
 use App\Http\Request;
 use App\Http\Response;
+use App\Model\Noticia;
 use App\Repository\NoticiaRepository;
 
 class NoticiasApiController extends ApiController
@@ -27,6 +28,11 @@ class NoticiasApiController extends ApiController
             return $this->respond(status: 204);
         }
 
-        return $this->respond(data: $noticias);
+        return $this->respond(
+            data: array_map(
+                fn (Noticia $noticia) => $noticia->toArray(),
+                $noticias,
+            ),
+        );
     }
 }
