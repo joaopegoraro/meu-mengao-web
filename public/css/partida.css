@@ -47,6 +47,29 @@
   background-image: var(--icon-url);
 }
 
+.match-round,
+.match-date {
+  display: inline-block;
+}
+
+.match-round-wrapper::before {
+  content: url("../icons/trophy.svg");
+  --size: 30px;
+  vertical-align: 20%;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+}
+
+.match-date-wrapper::before {
+  content: url("../icons/calendar.svg");
+  --size: 30px;
+  vertical-align: 20%;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+}
+
 @media (min-width: 50rem) {
   .match-card {
     max-width: max(350px, 100%);

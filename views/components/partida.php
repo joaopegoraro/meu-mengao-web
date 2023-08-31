@@ -26,15 +26,22 @@ use App\Model\Partida;
     </div>
     <div class="match-card-footer" <?= $esconderCampeonato ? "role='center'" : '' ?>>
         <?php if (!$esconderCampeonato) : ?>
-        <p class="match-round">
-            <?= $partida->campeonato ?>
-            <br />
-            <?= $partida->rodadaName ?>
-        </p>
+        <div class="match-round-wrapper">
+            <p class="match-round">
+                <?= $partida->campeonato ?>
+                <br />
+                <?= $partida->rodadaName ?>
+            </p>
+        </div>
         <?php endif ?>
 
-        <p class="match-date">
-            <?= $partida->getReadableDate() ?>
-        </p>
+        <div class="match-date-wrapper">
+            <p class="match-date">
+                <?php $date = $partida->getReadableDate(); ?>
+                <?= $date['date'] ?>
+                <br />
+                <?= $date['time'] ?>
+            </p>
+        </div>
     </div>
 </div>

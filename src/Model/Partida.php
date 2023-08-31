@@ -106,7 +106,7 @@ class Partida
         ];
     }
 
-    public function getReadableDate(): string
+    public function getReadableDate(): array
     {
         $dateSeconds = (int) $this->data / 1000;
         $now = new DateTime('now');
@@ -118,27 +118,29 @@ class Partida
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             timezone: 'America/Sao_Paulo',
+            pattern: 'H:mm'
         );
+        $time = $fmt->format($dateSeconds);
 
         $dayDifference = (int) $now->diff($dateTime)->format("%R%a"); // Extract days count in interval
         switch ($dayDifference) {
             case -1:
-                $fmt->setPattern("'Ontem, às 'H:mm");
+                $date = 'Ontem';
                 break;
             case 0:
-                $fmt->setPattern("'Hoje, às 'H:mm");
+                $date = 'Hoje';
                 break;
             case 1:
-                $fmt->setPattern("'Amanhã, às 'H:mm");
+                $prefix = 'Amanhã';
                 break;
             default:
-                if (abs($dayDifference) < 7) {
-                    $fmt->setPattern("EEEE', às 'H:mm");
-                } else {
-                    $fmt->setPattern("dd/MM', às 'H:mm");
-                }
+                $fmt->setPattern(abs($dayDifference) < 7 ? "EEEE" : "dd/MM");
+                $date = $fmt->format($dateSeconds);
         }
 
-        return $fmt->format($dateSeconds);
+        return [
+            'date' => $date,
+            'time' => $time,
+        ];
     }
 }
