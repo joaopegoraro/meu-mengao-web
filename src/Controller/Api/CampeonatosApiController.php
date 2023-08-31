@@ -21,5 +21,12 @@ class CampeonatosApiController extends ApiController
 
     public function findAll(Request $request): Response
     {
+        $campeonatos = $this->campeonatoRepository->findAll();
+
+        if (sizeof($campeonatos) == 0) {
+            return $this->respond(status: 204);
+        }
+
+        return $this->respond(data: $campeonatos);
     }
 }

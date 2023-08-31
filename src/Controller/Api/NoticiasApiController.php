@@ -22,6 +22,7 @@ class NoticiasApiController extends ApiController
     public function findAll(Request $request): Response
     {
         $noticias = $this->noticiaRepository->findAll();
+
         if (sizeof($noticias) == 0) {
             return $this->respond(status: 204);
         }
