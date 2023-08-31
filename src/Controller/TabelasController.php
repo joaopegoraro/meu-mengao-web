@@ -37,7 +37,7 @@ class TabelasController extends Controller
     public function index(Request $request): Response
     {
         $campeonatos = $this->campeonatoRepository->findAll();
-        $campeonatoId = $request->queryParams['id'] ?? $campeonatos[0]->id;
+        $campeonatoId = $request->queryParams['id'] ?? $this->partidaRepository->findProximaPartida()->campeonatoId;
         if ($campeonatoId)
             foreach ($campeonatos as $campeonato) {
                 if ($campeonato->id == $campeonatoId) {
@@ -102,7 +102,7 @@ class TabelasController extends Controller
         return $this->view(
             name: 'base',
             data: [
-                'title' => 'Tabelas',
+                'title' => $campeonatoSelecionado->nome,
                 'content' => $tabelasPageView,
                 'styles' => ['tabelas', 'partida', 'tabela'],
             ],
