@@ -72,7 +72,7 @@ class PartidasApiController extends ApiController
         }
 
         $rodadaIndex = $request->routeParams['rodadaIndex'];
-        if (!$rodadaIndex) {
+        if (!$rodadaIndex || !filter_var($rodadaIndex, FILTER_VALIDATE_INT)) {
             return $this->respondError(
                 detail: 'A rodadaIndex precisa ser um index válido',
             );
@@ -80,7 +80,7 @@ class PartidasApiController extends ApiController
 
         $partidas = $this->partidaRepository->findWithRodadaIndex(
             campeonatoId: $campeonatoId,
-            rodadaIndex: $rodadaIndex,
+            rodadaIndex: intval($rodadaIndex),
         );
 
         if (sizeof($partidas) == 0) {

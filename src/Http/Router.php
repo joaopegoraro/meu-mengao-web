@@ -54,12 +54,19 @@ class Router
                     $queryParams[$key] = filter_input(INPUT_GET, $key, FILTER_UNSAFE_RAW);
                 }
 
+                $routeParams = [];
+                foreach ($matches as $param => $valueArray) {
+                    if (sizeof($valueArray) > 0) {
+                        $routeParams[$param] = $valueArray[0];
+                    }
+                }
+
                 $request = new Request(
                     method: trim($_SERVER['REQUEST_METHOD']),
                     url: $url,
                     headers: getallheaders(),
                     body: $body,
-                    routeParams: array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY),
+                    routeParams: array_filter($routeParams, 'is_string', ARRAY_FILTER_USE_KEY),
                     queryParams: $queryParams,
                     contentType: !empty($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : ''
                 );

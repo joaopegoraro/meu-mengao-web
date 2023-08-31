@@ -9,7 +9,7 @@ class Response
 
     public readonly int $status;
     public readonly array $headers;
-    public readonly string $content;
+    public readonly ?string $content;
 
     /**
      * @param int $status
@@ -34,7 +34,9 @@ class Response
             header($key . ': ' . $value);
         }
 
-        echo $this->content;
+        if ($this->content) {
+            echo $this->content;
+        }
 
         exit(0);
     }
