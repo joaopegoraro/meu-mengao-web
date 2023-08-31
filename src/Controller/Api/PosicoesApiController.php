@@ -21,5 +21,20 @@ class PosicoesApiController extends ApiController
 
     public function findAllWithCampeonatoId(Request $request): Response
     {
+        $campeonatoId = $request->routeParams['campeonatoId'];
+        if (!$campeonatoId) {
+            return $this->respondError(
+                status: 400,
+                detail: 'O campeonatoId precisa ser um id válido',
+            );
+        }
+
+        $posicoes = $this->posicaoRepository->findWithCampeonatoId($campeonatoId);
+
+        if (sizeof($posicoes) == 0) {
+            return $this->respond(status: 204);
+        }
+
+        return $this->respond(data: $posicoes);
     }
 }
