@@ -37,8 +37,7 @@ class TabelasController extends Controller
     public function index(Request $request): Response
     {
         $campeonatos = $this->campeonatoRepository->findAll();
-        $campeonatoSelecionado = $campeonatos[0];
-        $campeonatoId = $request->queryParams['id'];
+        $campeonatoId = $request->queryParams['id'] ?? $campeonatos[0]->id;
         if ($campeonatoId)
             foreach ($campeonatos as $campeonato) {
                 if ($campeonato->id == $campeonatoId) {
@@ -46,8 +45,11 @@ class TabelasController extends Controller
                 }
             }
 
-
-        $partidas = $this->partidaRepository->findWithCampeonatoId($campeonatoSelecionado->id);
+        $rodadaIndex = $request->queryParams['round'] ?? $campeonatoSelecionado->rodadaAtual;
+        $partidas = $this->partidaRepository->findWithRodadaIndex(
+            campeonatoId: $campeonatoSelecionado->id,
+            rodadaIndex: intval($rodadaIndex),
+        );
         $rodadasViews = [];
         foreach ($partidas as $partida) {
             $partidaView = $this->renderer->render(
@@ -64,14 +66,16 @@ class TabelasController extends Controller
         $posicoes = $this->posicaoRepository->findWithCampeonatoId($campeonatoSelecionado->id);
         $tabelas = [];
         foreach ($posicoes as $posicao) {
-            if (!$tabelas[$posicao->classificacaoName]) {
-                $tabelas[$posicao->classificacaoName] = [];
+            if (!isset($tabelas[$posicao->classificacaoName])) {
+                $tabelas[$posicao->classificacaoName] = ['index' => $posicao->classificacaoIndex];
             }
             array_push($tabelas[$posicao->classificacaoName], $posicao);
         }
+        uasort($tabelas, fn ($a, $b) => $a['index'] > $b['index']);
 
         $tabelasViews = [];
-        foreach ($tabelas as $classificacaoName => $posicao) {
+        foreach ($tabelas as $classificacaoName => $posicoes) {
+            unset($posicoes['index']);
             $tabelaView = $this->renderer->render(
                 view: 'components/tabela',
                 data: [
@@ -83,17 +87,15 @@ class TabelasController extends Controller
             array_push($tabelasViews, $tabelaView);
         }
 
-        $rodadaIndex = $request->queryParams['round'] ?? $campeonatoSelecionado->rodadaAtual;
         $tabelasPageView = $this->renderer->render(
             view: 'tabelas',
             data: [
-                'campeonatoName' => $campeonatoSelecionado->nome,
+                'campeonatoSelecionado' => $campeonatoSelecionado,
                 'campeonatos' => $campeonatos,
                 'tabelaViews' => $tabelasViews,
                 'rodadaViews' => $rodadasViews,
                 'rodadaIndex' => $rodadaIndex,
-                'rodadaName' => 'Rodada ' . $rodadaIndex + 1,
-                'rodadaFinal' => $campeonato->rodadaFinal,
+                'rodadaName' =>  $partidas[0]->rodadaName,
             ],
         );
 

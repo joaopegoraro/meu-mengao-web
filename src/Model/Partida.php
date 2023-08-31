@@ -131,7 +131,7 @@ class Partida
                 $date = 'Hoje';
                 break;
             case 1:
-                $prefix = 'Amanhã';
+                $date = 'Amanhã';
                 break;
             default:
                 $fmt->setPattern(abs($dayDifference) < 7 ? "EEEE" : "dd/MM");
