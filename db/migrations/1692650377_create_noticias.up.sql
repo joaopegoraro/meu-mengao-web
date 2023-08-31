@@ -6,5 +6,6 @@ CREATE TABLE
         data VARCHAR(255) NOT NULL,
         site VARCHAR(255) NOT NULL,
         logo_site TEXT NOT NULL,
-        foto TEXT NOT NULL
+        foto TEXT NOT NULL,
+        foto_base_64 MEDIUMBLOB NOT NULL
     );
