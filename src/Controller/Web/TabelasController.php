@@ -2,15 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Web;
 
 use App\Core\Controller;
 use App\Core\Renderer;
 use App\Http\Request;
 use App\Http\Response;
-use App\Model\Campeonato;
-use App\Model\Partida;
-use App\Model\Posicao;
 use App\Repository\CampeonatoRepository;
 use App\Repository\PartidaRepository;
 use App\Repository\PosicaoRepository;

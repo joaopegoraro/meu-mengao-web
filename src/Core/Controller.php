@@ -9,7 +9,7 @@ use App\Http\Response;
 abstract class Controller
 {
 
-    protected  readonly Renderer $renderer;
+    protected readonly Renderer $renderer;
 
     public function __construct(Renderer $renderer)
     {

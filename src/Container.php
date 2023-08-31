@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Controller\CalendarioController;
-use App\Controller\NoticiasController;
-use App\Controller\ResultadosController;
-use App\Controller\TabelasController;
+use App\Controller\Api\CampeonatosApiController;
+use App\Controller\Api\NoticiasApiController;
+use App\Controller\Api\PartidasApiController;
+use App\Controller\Api\PosicoesApiController;
+use App\Controller\Web\CalendarioController;
+use App\Controller\Web\NoticiasController;
+use App\Controller\Web\ResultadosController;
+use App\Controller\Web\TabelasController;
 use App\Core\Renderer;
 use App\Database\Database;
 use App\Repository\CampeonatoRepository;
@@ -163,6 +167,54 @@ class Container
             renderer: $this->getBaseRenderer(),
             campeonatoRepository: $this->getCampeonatoRepository(),
             partidaRepository: $this->getPartidaRepository(),
+            posicaoRepository: $this->getPosicaoRepository(),
+        );
+    }
+
+    /**
+     * @var NoticiasApiController $noticiasApiController
+     */
+    private readonly NoticiasApiController $noticiasApiController;
+
+    public function getNoticiasApiController(): NoticiasApiController
+    {
+        return $this->noticiasApiController ?? $this->noticiasApiController = new NoticiasApiController(
+            noticiaRepository: $this->getNoticiaRepository(),
+        );
+    }
+
+    /**
+     * @var CampeonatosApiController $campeonatosApiController
+     */
+    private readonly CampeonatosApiController $campeonatosApiController;
+
+    public function getCampeonatosApiController(): CampeonatosApiController
+    {
+        return $this->campeonatosApiController ?? $this->campeonatosApiController = new CampeonatosApiController(
+            campeonatoRepository: $this->getCampeonatoRepository(),
+        );
+    }
+
+    /**
+     * @var PartidasApiController $partidasApiController
+     */
+    private readonly PartidasApiController $partidasApiController;
+
+    public function getPartidasApiController(): PartidasApiController
+    {
+        return $this->partidasApiController ?? $this->partidasApiController = new PartidasApiController(
+            partidaRepository: $this->getPartidaRepository(),
+        );
+    }
+
+    /**
+     * @var PosicoesApiController $posicoesApiController
+     */
+    private readonly PosicoesApiController $posicoesApiController;
+
+    public function getPosicoesApiController(): PosicoesApiController
+    {
+        return $this->posicoesApiController ?? $this->posicoesApiController = new PosicoesApiController(
             posicaoRepository: $this->getPosicaoRepository(),
         );
     }

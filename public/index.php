@@ -31,6 +31,13 @@ $router->get(
     onMatch: fn ($request) => $container->getTabelasController()->index($request),
 );
 
+// if url starts with '/api', only return an empty response with 404, without any html
+if (preg_match('/^\/api\/?.*/', $_SERVER['REQUEST_URI'])) {
+    http_response_code(404);
+    exit;
+}
+
+// else, return the 404.php template
 class Controller404 extends Controller
 {
 };
