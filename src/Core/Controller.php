@@ -31,4 +31,16 @@ abstract class Controller
             ),
         );
     }
+
+    function respond404(): Response
+    {
+        return $this->view(
+            name: 'base',
+            responseCode: 404,
+            data: [
+                'content' => $this->renderer->render('404'),
+                'styles' => ['404'],
+            ]
+        );
+    }
 }

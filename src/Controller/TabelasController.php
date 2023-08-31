@@ -45,6 +45,10 @@ class TabelasController extends Controller
                 }
             }
 
+        if (!isset($campeonatoSelecionado) || !$campeonatoSelecionado) {
+            return $this->respond404();
+        }
+
         $rodadaIndex = $request->queryParams['round'] ?? $campeonatoSelecionado->rodadaAtual;
         $partidas = $this->partidaRepository->findWithRodadaIndex(
             campeonatoId: $campeonatoSelecionado->id,

@@ -7,6 +7,7 @@ Autoload::register();
 
 use App\App;
 use App\Container;
+use App\Core\Controller;
 use App\Http\Router;
 
 $app = new App(rootDir: dirname(__DIR__));
@@ -30,4 +31,8 @@ $router->get(
     onMatch: fn ($request) => $container->getTabelasController()->index($request),
 );
 
-http_response_code(404);
+class Controller404 extends Controller
+{
+};
+$controller404 = new Controller404($container->getBaseRenderer());
+$controller404->respond404()->send();
