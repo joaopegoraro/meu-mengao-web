@@ -20,7 +20,9 @@ abstract class Controller
         string $name,
         array $data = [],
         int $responseCode = 200,
-        array $headers = [],
+        array $headers = [
+            'Cache-Control' => 'max-age=31536000',
+        ],
     ): Response {
         return new Response(
             status: $responseCode,

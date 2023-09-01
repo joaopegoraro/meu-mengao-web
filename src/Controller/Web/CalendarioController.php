@@ -47,6 +47,7 @@ class CalendarioController extends Controller
             name: 'base',
             data: [
                 'title' => 'Calendário',
+                'description' => 'Próximos jogos do Flamengo.',
                 'content' => $calendarioView,
                 'styles' => ['partidas', 'partida'],
             ],

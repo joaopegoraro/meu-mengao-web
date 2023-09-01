@@ -26,7 +26,7 @@
   padding: 1em;
 }
 
-.match-card-footer[role="center"] {
+.center {
   justify-content: center;
 }
 

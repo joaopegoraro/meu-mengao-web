@@ -18,7 +18,7 @@ header {
   z-index: 2;
   top: 1.5em;
   position: absolute;
-  background-image: url("../images/logo-200.png");
+  background-image: url("../images/logo-200.webp");
   background-size: var(--size);
 }
 
@@ -77,7 +77,7 @@ header {
   display: inline-block;
   height: var(--size);
   width: var(--size);
-  background-image: url("../images/playstore-25.png");
+  background-image: url("../images/playstore-25.webp");
 }
 
 @media (min-width: 50rem) {

@@ -50,6 +50,7 @@ class ResultadosController extends Controller
             name: 'base',
             data: [
                 'title' => 'Resultados',
+                'description' => 'Resultados dos jogos do Flamengo.',
                 'content' => $resultadosView,
                 'styles' => ['partidas', 'partida'],
             ],

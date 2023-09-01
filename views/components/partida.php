@@ -14,25 +14,25 @@ use App\Model\Partida;
         <div class="team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoCasa ?>');">
             <p class="team-name"><?= $partida->timeCasa ?></p>
             <?php if ($mostrarPlacar) : ?>
-            <p class="team-score"><?= $partida->golsCasa ?></p>
+                <p class="team-score"><?= $partida->golsCasa ?></p>
             <?php endif ?>
         </div>
         <div class="team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoFora ?>');">
             <p class="team-name"><?= $partida->timeFora ?></p>
             <?php if ($mostrarPlacar) : ?>
-            <p class="team-score"><?= $partida->golsFora ?></p>
+                <p class="team-score"><?= $partida->golsFora ?></p>
             <?php endif ?>
         </div>
     </div>
-    <div class="match-card-footer" <?= $esconderCampeonato ? "role='center'" : '' ?>>
+    <div class="match-card-footer <?= $esconderCampeonato ? 'center' : '' ?>">
         <?php if (!$esconderCampeonato) : ?>
-        <div class="match-round-wrapper">
-            <p class="match-round">
-                <?= $partida->campeonato ?>
-                <br />
-                <?= $partida->rodadaName ?>
-            </p>
-        </div>
+            <div class="match-round-wrapper">
+                <p class="match-round">
+                    <?= $partida->campeonato ?>
+                    <br />
+                    <?= $partida->rodadaName ?>
+                </p>
+            </div>
         <?php endif ?>
 
         <div class="match-date-wrapper">
