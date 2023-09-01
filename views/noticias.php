@@ -1,11 +1,13 @@
 <?php
 
 use App\Model\Noticia;
+use App\Model\Partida;
+use App\Model\Posicao;
 
 /**
  * @var Noticia[] $noticias
- * @var mixed $nextMatch A view que representa a próxima partida
- * @var mixed $tabelaBrasileirao A view que representa a tabela do brasileirão
+ * @var Partida $proximaPartida 
+ * @var Posicao[] $tabelaBrasileirao 
  */
 ?>
 
@@ -42,7 +44,10 @@ use App\Model\Noticia;
                         Próxima Partida
                     </a>
                     <div class="next-match-card">
-                        <?= $nextMatch ?>
+                        <?php
+                        $partida = $proximaPartida;
+                        include 'components/partida.php';
+                        ?>
                     </div>
                 </section>
 
@@ -51,6 +56,10 @@ use App\Model\Noticia;
                         Tabela Brasileirão
                     </a>
                     <?= $tabelaBrasileirao ?>
+                    <?php
+                    $posicoes = $tabelaBrasileirao;
+                    include 'components/tabela.php';
+                    ?>
                 </section>
         </div>
     </div>

@@ -1,8 +1,11 @@
 <?php
 
+use App\Model\Partida;
+
 /**
  * @var string $partidasTitle
- * @var mixed $partidas A view que representa uma partida
+ * @var bool $mostrarPlacar
+ * @var Partida[] $partidas 
  */
 ?>
 
@@ -11,8 +14,8 @@
         <div class="main | flow" style="--flow-space: 2em">
             <h1 class="fs-primary-heading fw-bold"><?= $partidasTitle ?></h1>
             <div class="partidas">
-                <?php foreach ($partidas as $partidaView) : ?>
-                    <?= $partidaView ?>
+                <?php foreach ($partidas as $partida) : ?>
+                    <?php include 'partida.php' ?>
                 <?php endforeach ?>
             </div>
         </div>

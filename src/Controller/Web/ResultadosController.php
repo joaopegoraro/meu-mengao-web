@@ -25,34 +25,18 @@ class ResultadosController extends Controller
 
     public function index(Request $request): Response
     {
-        $partidas = $this->partidaRepository->findResultados();
-        $partidasView = [];
-        foreach ($partidas as $partida) {
-            $partidaView = $this->renderer->render(
-                view: 'components/partida',
-                data: [
-                    'partida' => $partida,
-                    'mostrarPlacar' => true,
-                ],
-            );
-            array_push($partidasView, $partidaView);
-        }
-
-        $resultadosView = $this->renderer->render(
-            view: 'components/partidas',
-            data: [
-                'partidasTitle' => 'Resultados',
-                'partidas' => $partidasView,
-            ],
-        );
-
         return $this->view(
             name: 'base',
             data: [
                 'title' => 'Resultados',
                 'description' => 'Resultados dos jogos do Flamengo.',
-                'content' => $resultadosView,
                 'styles' => ['partidas', 'partida'],
+                'content' => 'components/partidas',
+                'data' => [
+                    'partidasTitle' => 'Resultados',
+                    'partidas' => $this->partidaRepository->findResultados(),
+                    'mostrarPlacar' => true,
+                ],
             ],
         );
     }

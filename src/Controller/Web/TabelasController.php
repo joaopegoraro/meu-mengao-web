@@ -46,24 +46,8 @@ class TabelasController extends Controller
             return $this->respond404();
         }
 
-        $rodadaIndex = $request->queryParams['round'] ?? $campeonatoSelecionado->rodadaAtual;
-        $partidas = $this->partidaRepository->findWithRodadaIndex(
-            campeonatoId: $campeonatoSelecionado->id,
-            rodadaIndex: intval($rodadaIndex),
-        );
-        $rodadasViews = [];
-        foreach ($partidas as $partida) {
-            $partidaView = $this->renderer->render(
-                view: 'components/partida',
-                data: [
-                    'partida' => $partida,
-                    'esconderCampeonato' => true,
-                    'mostrarPlacar' => true,
-                ],
-            );
-            array_push($rodadasViews, $partidaView);
-        }
 
+        // agrupar posicoes com mesmo classificacaoName
         $posicoes = $this->posicaoRepository->findWithCampeonatoId($campeonatoSelecionado->id);
         $tabelas = [];
         foreach ($posicoes as $posicao) {
@@ -72,41 +56,35 @@ class TabelasController extends Controller
             }
             array_push($tabelas[$posicao->classificacaoName], $posicao);
         }
+
+        // ordenar pelo classificacaoIndex
         uasort($tabelas, fn ($a, $b) => $a['index'] > $b['index']);
 
-        $tabelasViews = [];
-        foreach ($tabelas as $classificacaoName => $posicoes) {
-            unset($posicoes['index']);
-            $tabelaView = $this->renderer->render(
-                view: 'components/tabela',
-                data: [
-                    'posicoes' => $posicoes,
-                    'classificacaoName' => $classificacaoName,
-                    'tabelaCompleta' => true,
-                ],
-            );
-            array_push($tabelasViews, $tabelaView);
-        }
-
-        $tabelasPageView = $this->renderer->render(
-            view: 'tabelas',
-            data: [
-                'campeonatoSelecionado' => $campeonatoSelecionado,
-                'campeonatos' => $campeonatos,
-                'tabelaViews' => $tabelasViews,
-                'rodadaViews' => $rodadasViews,
-                'rodadaIndex' => $rodadaIndex,
-                'rodadaName' =>  $partidas[0]->rodadaName,
-            ],
+        $rodadaIndex = $request->queryParams['round'] ?? $campeonatoSelecionado->rodadaAtual;
+        $partidas = $this->partidaRepository->findWithRodadaIndex(
+            campeonatoId: $campeonatoSelecionado->id,
+            rodadaIndex: intval($rodadaIndex),
         );
+
+        if (!$partidas) {
+            return $this->respond404();
+        }
 
         return $this->view(
             name: 'base',
             data: [
                 'title' => $campeonatoSelecionado->nome,
                 'description' => 'Tabelas, classificação e jogos do Flamengo na Série A (Brasileirão), Copa Libertadores, Copa do Brasil, Campeonato Carioca (Estaduais) e outros.',
-                'content' => $tabelasPageView,
                 'styles' => ['tabelas', 'partida', 'tabela'],
+                'content' => 'tabelas',
+                'data' => [
+                    'rodadas' => $partidas,
+                    'tabelas' => $tabelas,
+                    'campeonatoSelecionado' => $campeonatoSelecionado,
+                    'campeonatos' => $campeonatos,
+                    'rodadaIndex' => $rodadaIndex,
+                    'rodadaName' =>  $partidas[0]->rodadaName,
+                ],
             ],
         );
     }

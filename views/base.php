@@ -2,8 +2,9 @@
 
 /**
  * @var string $title The \<head\> title of the page
- * @var mixed[] $styles The stylesheet name (without the trailing extension '.css')
- * @var mixed $content The main content of the page
+ * @var string[] $styles The stylesheet names (without the trailing extension '.css')
+ * @var string $content The name of view to be the main content of the page (without the trailing extension '.php')
+ * @var array $data The variables to be used by the $content
  */
 ?>
 
@@ -41,7 +42,12 @@
         </div>
     </header>
 
-    <?= $content ?>
+    <?php
+    foreach ($data as $key => $value) {
+        $$key = $value;
+    }
+    include($content . '.php')
+    ?>
 
     <footer>
         <div class="container">

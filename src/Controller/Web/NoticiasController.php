@@ -33,35 +33,17 @@ class NoticiasController extends Controller
 
     public function index(Request $request): Response
     {
-        $nextMatch = $this->partidaRepository->findProximaPartida();
-        $nextMatchView = $this->renderer->render(
-            view: 'components/partida',
-            data: ['partida' => $nextMatch],
-        );
-
-
-        $posicoes = $this->posicaoRepository->findWithCampeonatoId('serie-a', limit: 10);
-        $tabelaBrasileiraoView = $this->renderer->render(
-            view: 'components/tabela',
-            data: ['posicoes' => $posicoes],
-        );
-
-        $noticias = $this->noticiaRepository->findAll();
-        $noticiasView = $this->renderer->render(
-            view: 'noticias',
-            data: [
-                'noticias' => $noticias,
-                'nextMatch' => $nextMatchView,
-                'tabelaBrasileirao' => $tabelaBrasileiraoView,
-            ],
-        );
-
         return $this->view(
             name: 'base',
             data: [
-                'content' => $noticiasView,
                 'description' => 'Últimas notícias do Flamengo, vindas dos principais portais como Globo Esporte (GE), Coluna do Fla, Youtube de Mauro Cézar Pereira, Venê Casagrande e FlaTV. Pŕoxima partida do Flamengo e tabela do brasileirão.',
                 'styles' => ['noticias', 'partida', 'tabela'],
+                'content' => 'noticias',
+                'data' => [
+                    'noticias' => $this->noticiaRepository->findAll(),
+                    'proximaPartida' => $this->partidaRepository->findProximaPartida(),
+                    'tabelaBrasileirao' => $this->posicaoRepository->findWithCampeonatoId('serie-a', limit: 10),
+                ],
             ],
         );
     }

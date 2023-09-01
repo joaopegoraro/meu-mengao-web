@@ -25,31 +25,17 @@ class CalendarioController extends Controller
 
     public function index(Request $request): Response
     {
-        $partidas = $this->partidaRepository->findCalendario();
-        $partidasView = [];
-        foreach ($partidas as $partida) {
-            $partidaView = $this->renderer->render(
-                view: 'components/partida',
-                data: ['partida' => $partida],
-            );
-            array_push($partidasView, $partidaView);
-        }
-
-        $calendarioView = $this->renderer->render(
-            view: 'components/partidas',
-            data: [
-                'partidasTitle' => 'Calendário',
-                'partidas' => $partidasView,
-            ],
-        );
-
         return $this->view(
             name: 'base',
             data: [
                 'title' => 'Calendário',
                 'description' => 'Próximos jogos do Flamengo.',
-                'content' => $calendarioView,
                 'styles' => ['partidas', 'partida'],
+                'content' => 'components/partidas',
+                'data' => [
+                    'partidasTitle' => 'Calendário',
+                    'partidas' => $this->partidaRepository->findCalendario(),
+                ],
             ],
         );
     }
