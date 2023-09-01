@@ -23,40 +23,42 @@ use App\Model\Campeonato;
                     </h1>
                     <div class="tables-dropdown-content">
                         <?php foreach ($campeonatos as $campeonato) : ?>
-                            <a class="tables-dropdown-item" href="?id=<?= $campeonato->id ?>">
-                                <?= $campeonato->nome ?>
-                            </a>
+                        <a class="tables-dropdown-item" href="?id=<?= $campeonato->id ?>">
+                            <?= $campeonato->nome ?>
+                        </a>
                         <?php endforeach ?>
                     </div>
                 </div>
 
                 <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
-                    <div class="table-list | flow" style="--flow-space: 3em">
-                        <?php foreach ($tabelaViews as $index => $tabelaView) : ?>
+                <div class="table-list | flow" style="--flow-space: 3em">
+                    <?php foreach ($tabelaViews as $index => $tabelaView) : ?>
 
-                            <?= $tabelaView ?>
+                    <?= $tabelaView ?>
 
-                            <?php if ($index < array_key_last($tabelaViews)) : ?>
-                                <hr class="table-divider">
-                            <?php endif ?>
+                    <?php if ($index < array_key_last($tabelaViews)) : ?>
+                    <hr class="table-divider">
+                    <?php endif ?>
 
-                        <?php endforeach ?>
-                    </div>
+                    <?php endforeach ?>
+                </div>
                 <?php endif ?>
             </section>
 
 
-            <section class="championship-rounds | flow" style="--flow-space: 4em">
+            <section id="rounds" class="championship-rounds | flow" style="--flow-space: 4em">
                 <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
-                    <hr class="mobile-ruler">
+                <hr class="mobile-ruler">
                 <?php endif ?>
 
                 <div class="round-selector">
                     <div class="round-arrow-link-wrapper">
                         <?php if ($rodadaIndex > 0) : ?>
-                            <a class="round-arrow-link" href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex - 1 ?>" title="Ver rodada anterior">
-                                <div class="arrow-left"></div>
-                            </a>
+                        <a class="round-arrow-link"
+                            href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex - 1 ?>#rounds"
+                            title="Ver rodada anterior">
+                            <div class="arrow-left"></div>
+                        </a>
                         <?php endif ?>
                     </div>
                     <h1 class="round-title | fs-primary-heading fw-bold">
@@ -64,16 +66,19 @@ use App\Model\Campeonato;
                     </h1>
                     <div class="round-arrow-link-wrapper">
                         <?php if ($rodadaIndex < $campeonatoSelecionado->rodadaFinal) : ?>
-                            <a class="round-arrow-link" href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex + 1 ?>" title="Ver próxima rodada">
-                                <div class="arrow-right"></div>
-                            </a>
+                        <a class="round-arrow-link"
+                            href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex + 1 ?>#rounds"
+                            title="Ver próxima rodada">
+                            <div class="arrow-right"></div>
+                        </a>
                         <?php endif ?>
                     </div>
                 </div>
 
-                <div class="round-list <?= $campeonatoSelecionado->possuiClassificacao ? '| flow' : 'no-table-round-list' ?>" style="--flow-space: 3em">
+                <div class="round-list <?= $campeonatoSelecionado->possuiClassificacao ? '| flow' : 'no-table-round-list' ?>"
+                    style="--flow-space: 3em">
                     <?php foreach ($rodadaViews as $rodadaView) : ?>
-                        <?= $rodadaView ?>
+                    <?= $rodadaView ?>
                     <?php endforeach ?>
                 </div>
 
