@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
 /* || RESET https://piccalil.li/blog/a-modern-css-reset */
 
 /* Box sizing rules */
@@ -64,8 +66,6 @@ svg {
     scroll-behavior: auto !important;
   }
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 /* || DESIGN SYSTEM */
 
