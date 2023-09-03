@@ -9,15 +9,13 @@ use App\Model\Partida;
  */
 ?>
 
-<main>
-    <div class="container">
-        <div class="main | flow" style="--flow-space: 2em">
-            <h1 class="fs-primary-heading fw-bold"><?= $partidasTitle ?></h1>
-            <div class="partidas">
-                <?php foreach ($partidas as $partida) : ?>
-                    <?php include 'partida.php' ?>
-                <?php endforeach ?>
-            </div>
+<main class="l-container">
+    <div class="l-grid" style="--grid-gap: 2rem">
+        <h1><?= $partidasTitle ?></h1>
+        <div class="c-partidas">
+            <?php foreach ($partidas as $partida) : ?>
+                <?php include 'partida.php' ?>
+            <?php endforeach ?>
         </div>
     </div>
 </main>

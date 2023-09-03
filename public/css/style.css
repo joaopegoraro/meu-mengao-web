@@ -451,10 +451,8 @@ article:focus-within {
 }
 
 .c-not-found {
-  padding: var(--main-padding);
   height: min(100vh, 800px);
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2rem;
   align-items: center;
   justify-content: center;
@@ -464,6 +462,13 @@ article:focus-within {
   margin-inline: auto;
   border-radius: 20px;
   box-shadow: 0 0 15px 5px rgba(100, 100, 100, 0.8);
+}
+
+.c-partidas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  grid-column: auto;
+  gap: 3.25em;
 }
 
 /* responsivity */
