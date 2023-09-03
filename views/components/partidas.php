@@ -12,7 +12,7 @@ use App\Model\Partida;
 <main class="l-container">
     <div class="l-grid" style="--grid-gap: 2rem">
         <h1><?= $partidasTitle ?></h1>
-        <div class="c-partidas">
+        <div class="l-partidas-grid">
             <?php foreach ($partidas as $partida) : ?>
                 <?php include 'partida.php' ?>
             <?php endforeach ?>

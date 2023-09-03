@@ -1,210 +1,38 @@
-@import url("root.css");
-
-/* MAIN */
-
-.main {
-  display: grid;
-  grid-template-areas:
-    "tables"
-    "rounds";
-  gap: 3.25em;
-  min-height: 50em;
-  padding: var(--main-padding);
-}
-
-.no-table-main {
-  display: block;
-}
-
-.table-divider,
-.mobile-ruler {
-  width: 90%;
-  margin-inline: auto;
-  color: var(--clr-light-200);
-}
-
-@media (min-width: 50em) {
-  .main {
-    grid-template-areas: "tables rounds";
-    grid-template-columns: auto minmax(350px, 30%);
-  }
-
-  .mobile-ruler {
-    display: none;
-  }
-}
-
 /* TABLES */
 
-.championship-tables {
-  grid-area: tables;
-}
-
-.championship-tables {
-  font-size: 1rem;
-}
-
-td:not(.table-team-name) {
-  padding-inline: 0.3em;
-}
-
-.table-team-name {
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-@media (max-width: 1200px) {
-  .championship-tables {
-    font-size: 0.8rem;
-  }
-}
-
 @media (max-width: 900px) {
-  .table-team-name {
+  .table__team-name {
     text-align: center !important;
     padding-inline: 0.5em !important;
   }
-  .table-team-non-initials {
+  .table__team-non-initials {
     display: none;
     max-width: 5ch;
     text-overflow: clip;
   }
-  .table-team-initials {
+  .table__team-initials {
     text-transform: uppercase;
   }
 }
 
 @media (max-width: 799px) {
-  .table-team-name {
+  .table__team-name {
     text-align: start !important;
     max-width: 100%;
     padding-inline: 0.5em 1em;
   }
-  .table-team-non-initials {
+  .table__team-non-initials {
     display: inline;
     max-width: 100%;
   }
-  .table-team-initials {
+  .table__team-initials {
     text-transform: none;
   }
 }
 
 @media (max-width: 450px) {
-  .table-team-name {
+  .table__team-name {
     text-align: center !important;
     padding-inline: 0.5em !important;
   }
-  .table-team-non-initials {
-    display: none;
-    max-width: 5ch;
-    text-overflow: clip;
-  }
-  .table-team-initials {
-    text-transform: uppercase;
-  }
-}
-
-/* TABLE DROPDOWN */
-
-.tables-dropdown {
-  position: relative;
-  display: inline-block;
-  width: min(100%, 350px);
-}
-
-.tables-dropdown-title {
-  background-color: var(--clr-primary-400);
-  color: var(--clr-light-100);
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  text-align: center;
-  border-radius: 8px;
-  padding: 12px 16px;
-}
-
-.tables-dropdown-content {
-  display: none;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-}
-
-.tables-dropdown-item {
-  background-color: var(--clr-primary-400);
-  text-decoration: none;
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: var(--clr-light-100);
-  font-size: var(--fs-secondary-heading);
-  font-weight: var(--fw-semi-bold);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-}
-
-.tables-dropdown-item:last-of-type {
-  border-radius: 0 0 8px 8px;
-}
-
-:is(.tables-dropdown:hover, .tables-dropdown:focus) .tables-dropdown-content {
-  display: block;
-}
-
-:is(.tables-dropdown:hover, .tables-dropdown:focus) .tables-dropdown-title {
-  border-radius: 8px 8px 0 0;
-}
-
-/* ROUNDS */
-
-.championship-rounds {
-  grid-area: rounds;
-}
-
-.no-table-round-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
-  grid-column: auto;
-  gap: 3.25em;
-}
-
-/* ROUND SELECTOR */
-
-.round-selector {
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
-  align-items: center;
-}
-
-.round-title {
-  text-align: center;
-}
-
-.arrow-right {
-  text-align: end;
-}
-
-.arrow-right::after {
-  content: "";
-  border: solid var(--clr-dark-800);
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 0.5em;
-
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-}
-
-.arrow-left {
-  text-align: start;
-}
-
-.arrow-left::before {
-  content: "";
-  border: solid var(--clr-dark-800);
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 0.5em;
-
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
 }

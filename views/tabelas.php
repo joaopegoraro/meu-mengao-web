@@ -13,80 +13,66 @@ use App\Model\Campeonato;
 ?>
 
 <main class="l-container">
-    <div class="main <?= $campeonatoSelecionado->possuiClassificacao ? '' : 'no-table-main | flow' ?>">
-        <section class="championship-tables | flow" style="--flow-space: 2em">
+    <div class="l-tables-grid<?php if (!$campeonatoSelecionado->possuiClassificacao) echo ' l-tables-grid--no-table' ?>">
+        <section class="l-championship-tables">
 
-            <div class="tables-dropdown" tabindex=0>
-                <h1 class="tables-dropdown-title | fs-primary-heading fw-bold">
+            <div class="c-tables-dropdown" tabindex=0>
+                <h1 class="c-tables-dropdown__title">
                     <?= $campeonatoSelecionado->nome ?? 'Campeonato' ?>
                 </h1>
-                <div class="tables-dropdown-content">
+                <div class="c-tables-dropdown__content">
                     <?php foreach ($campeonatos as $campeonato) : ?>
-                    <a class="tables-dropdown-item" href="?id=<?= $campeonato->id ?>">
-                        <?= $campeonato->nome ?>
-                    </a>
+                        <a class="c-tables-dropdown__item anchor--light" href="?id=<?= $campeonato->id ?>">
+                            <?= $campeonato->nome ?>
+                        </a>
                     <?php endforeach ?>
                 </div>
             </div>
 
             <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
-            <div class="table-list | flow" style="--flow-space: 3em">
-                <?php
-                        $tabelaCompleta = true;
-                        foreach ($tabelas as $classificacaoName => $posicoes) :
-                            unset($posicoes['index']);
-
-                            include 'components/tabela.php';
-
-                            if ($classificacaoName < array_key_last($tabelas)) :
-                                echo '<hr class="table-divider">';
-                            endif;
-
-                        endforeach;
-                        ?>
-            </div>
+                <div class="l-table-list">
+                    <?php
+                    $tabelaCompleta = true;
+                    foreach ($tabelas as $classificacaoName => $posicoes) :
+                        unset($posicoes['index']);
+                        include 'components/tabela.php';
+                        if ($classificacaoName < array_key_last($tabelas)) echo '<hr>';
+                    endforeach;
+                    ?>
+                </div>
             <?php endif ?>
         </section>
 
 
-        <section id="rounds" class="championship-rounds | flow" style="--flow-space: 4em">
+        <section class="l-championship-rounds">
             <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
-            <hr class="mobile-ruler">
+                <hr class="ruler--mobile">
             <?php endif ?>
 
-            <div class="round-selector">
-                <div class="round-arrow-link-wrapper">
-                    <?php if ($rodadaIndex > 0) : ?>
-                    <a class="round-arrow-link"
-                        href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex - 1 ?>#rounds"
-                        title="Ver rodada anterior">
-                        <div class="arrow-left"></div>
+            <div class="c-round-selector">
+                <?php if ($rodadaIndex > 0) : ?>
+                    <a href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex - 1 ?>#rounds" title="Ver rodada anterior">
+                        <div class="c-arrow-left"></div>
                     </a>
-                    <?php endif ?>
-                </div>
-                <h1 class="round-title | fs-primary-heading fw-bold">
-                    <?= $rodadaName ?>
-                </h1>
-                <div class="round-arrow-link-wrapper">
-                    <?php if ($rodadaIndex < $campeonatoSelecionado->rodadaFinal) : ?>
-                    <a class="round-arrow-link"
-                        href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex + 1 ?>#rounds"
-                        title="Ver próxima rodada">
-                        <div class="arrow-right"></div>
+                <?php endif ?>
+
+                <h1 class="u-text-center"><?= $rodadaName ?></h1>
+
+                <?php if ($rodadaIndex < $campeonatoSelecionado->rodadaFinal) : ?>
+                    <a href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex + 1 ?>#rounds" title="Ver próxima rodada">
+                        <div class="c-arrow-right"></div>
                     </a>
-                    <?php endif ?>
-                </div>
+                <?php endif ?>
             </div>
 
-            <div class="round-list <?= $campeonatoSelecionado->possuiClassificacao ? '| flow' : 'no-table-round-list' ?>"
-                style="--flow-space: 3em">
+            <div class="l-round-list<?php if (!$campeonatoSelecionado->possuiClassificacao) echo ' l-round-list--no-table' ?>">
                 <?php
-                    $esconderCampeonato = true;
-                    $mostrarPlacar = true;
-                    foreach ($rodadas as $partida) :
-                        include 'components/partida.php';
-                    endforeach;
-                    ?>
+                $esconderCampeonato = true;
+                $mostrarPlacar = true;
+                foreach ($rodadas as $partida) :
+                    include 'components/partida.php';
+                endforeach;
+                ?>
             </div>
 
         </section>

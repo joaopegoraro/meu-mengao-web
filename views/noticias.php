@@ -54,6 +54,6 @@ use App\Model\Posicao;
                 include 'components/tabela.php';
                 ?>
             </section>
-    </div>
+        </aside>
     </div>
 </main>
