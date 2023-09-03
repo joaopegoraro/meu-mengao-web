@@ -37,7 +37,6 @@ class NoticiasController extends Controller
             name: 'base',
             data: [
                 'description' => 'Últimas notícias do Flamengo, vindas dos principais portais como Globo Esporte (GE), Coluna do Fla, Youtube de Mauro Cézar Pereira, Venê Casagrande e FlaTV. Pŕoxima partida do Flamengo e tabela do brasileirão.',
-                'styles' => ['noticias', 'partida', 'tabela'],
                 'content' => 'noticias',
                 'data' => [
                     'noticias' => $this->noticiaRepository->findAll(),

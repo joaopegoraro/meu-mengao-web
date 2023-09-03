@@ -158,6 +158,9 @@ a {
   text-decoration: none;
 }
 
+table {
+  width: 100%;
+}
 th {
   padding-bottom: 0.5em;
   font-weight: var(--fw-semi-bold);
@@ -419,7 +422,35 @@ article:focus-within {
   gap: 1rem;
 }
 
+.table__team-name {
+  text-align: start;
+  white-space: nowrap;
+}
+.table__team-name::before {
+  --size: 20px;
+  content: "";
+  margin-right: 0.5em;
+  vertical-align: middle;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  background-image: var(--icon-url);
+}
+.table__position,
+.table__points {
+  font-weight: var(--fw-semi-bold);
+}
+.table__optional-cell {
+  display: none;
+}
+
 /* responsivity */
+
+@media (min-width: 24em) {
+  .table__optional-cell {
+    display: table-cell;
+  }
+}
 
 @media (min-width: 48em) {
   :where(.l-container) {
@@ -447,5 +478,15 @@ article:focus-within {
     height: 50rem;
     top: 2em;
     bottom: 0;
+  }
+
+  .table__optional-cell {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .table__optional-cell {
+    display: table-cell;
   }
 }

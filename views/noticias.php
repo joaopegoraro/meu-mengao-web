@@ -17,20 +17,19 @@ use App\Model\Posicao;
             <h1>Notícias</h1>
             <ul class="l-grid" style="--grid-gap: 3rem" role="list" aria-label="Notícias">
                 <?php foreach ($noticias as $noticia) : ?>
-                <li>
-                    <article>
-                        <a class="anchor--light" href="<?= htmlspecialchars($noticia->link) ?>">
-                            <img class="c-article__image" src="<?= $noticia->foto ?>" alt="" decoding="async">
-                            <div class="c-article__content">
-                                <p class="c-article__site"
-                                    style="--icon-url: url('data:image/png;base64,<?= $noticia->logoSite ?>');">
-                                    <?= $noticia->site ?>
-                                </p>
-                                <h2><?= $noticia->titulo ?></h2>
-                            </div>
-                        </a>
-                    </article>
-                </li>
+                    <li>
+                        <article>
+                            <a class="anchor--light" href="<?= htmlspecialchars($noticia->link) ?>">
+                                <img class="c-article__image" src="<?= $noticia->foto ?>" alt="" decoding="async">
+                                <div class="c-article__content">
+                                    <p class="c-article__site" style="--icon-url: url('data:image/png;base64,<?= $noticia->logoSite ?>');">
+                                        <?= $noticia->site ?>
+                                    </p>
+                                    <h2><?= $noticia->titulo ?></h2>
+                                </div>
+                            </a>
+                        </article>
+                    </li>
                 <?php endforeach ?>
             </ul>
         </section>
@@ -50,7 +49,6 @@ use App\Model\Posicao;
                 <a class="anchor--dark anchor--big" href="/tabelas?id=serie-a">
                     Tabela Brasileirão
                 </a>
-                <?= $tabelaBrasileirao ?>
                 <?php
                 $posicoes = $tabelaBrasileirao;
                 include 'components/tabela.php';
