@@ -213,6 +213,12 @@ article:focus-within {
   --article-color: var(--clr-primary-200);
 }
 
+/* utilities */
+
+.u-text-center {
+  text-align: center;
+}
+
 /* components */
 
 .l-grid {
@@ -442,6 +448,22 @@ article:focus-within {
 }
 .table__optional-cell {
   display: none;
+}
+
+.c-not-found {
+  padding: var(--main-padding);
+  height: min(100vh, 800px);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-not-found__image {
+  margin-inline: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 15px 5px rgba(100, 100, 100, 0.8);
 }
 
 /* responsivity */

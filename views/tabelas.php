@@ -12,27 +12,26 @@ use App\Model\Campeonato;
  */
 ?>
 
-<main>
-    <div class="container">
-        <div class="main <?= $campeonatoSelecionado->possuiClassificacao ? '' : 'no-table-main | flow' ?>">
-            <section class="championship-tables | flow" style="--flow-space: 2em">
+<main class="l-container">
+    <div class="main <?= $campeonatoSelecionado->possuiClassificacao ? '' : 'no-table-main | flow' ?>">
+        <section class="championship-tables | flow" style="--flow-space: 2em">
 
-                <div class="tables-dropdown" tabindex=0>
-                    <h1 class="tables-dropdown-title | fs-primary-heading fw-bold">
-                        <?= $campeonatoSelecionado->nome ?? 'Campeonato' ?>
-                    </h1>
-                    <div class="tables-dropdown-content">
-                        <?php foreach ($campeonatos as $campeonato) : ?>
-                            <a class="tables-dropdown-item" href="?id=<?= $campeonato->id ?>">
-                                <?= $campeonato->nome ?>
-                            </a>
-                        <?php endforeach ?>
-                    </div>
+            <div class="tables-dropdown" tabindex=0>
+                <h1 class="tables-dropdown-title | fs-primary-heading fw-bold">
+                    <?= $campeonatoSelecionado->nome ?? 'Campeonato' ?>
+                </h1>
+                <div class="tables-dropdown-content">
+                    <?php foreach ($campeonatos as $campeonato) : ?>
+                    <a class="tables-dropdown-item" href="?id=<?= $campeonato->id ?>">
+                        <?= $campeonato->nome ?>
+                    </a>
+                    <?php endforeach ?>
                 </div>
+            </div>
 
-                <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
-                    <div class="table-list | flow" style="--flow-space: 3em">
-                        <?php
+            <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
+            <div class="table-list | flow" style="--flow-space: 3em">
+                <?php
                         $tabelaCompleta = true;
                         foreach ($tabelas as $classificacaoName => $posicoes) :
                             unset($posicoes['index']);
@@ -45,47 +44,51 @@ use App\Model\Campeonato;
 
                         endforeach;
                         ?>
-                    </div>
-                <?php endif ?>
-            </section>
+            </div>
+            <?php endif ?>
+        </section>
 
 
-            <section id="rounds" class="championship-rounds | flow" style="--flow-space: 4em">
-                <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
-                    <hr class="mobile-ruler">
-                <?php endif ?>
+        <section id="rounds" class="championship-rounds | flow" style="--flow-space: 4em">
+            <?php if ($campeonatoSelecionado->possuiClassificacao) : ?>
+            <hr class="mobile-ruler">
+            <?php endif ?>
 
-                <div class="round-selector">
-                    <div class="round-arrow-link-wrapper">
-                        <?php if ($rodadaIndex > 0) : ?>
-                            <a class="round-arrow-link" href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex - 1 ?>#rounds" title="Ver rodada anterior">
-                                <div class="arrow-left"></div>
-                            </a>
-                        <?php endif ?>
-                    </div>
-                    <h1 class="round-title | fs-primary-heading fw-bold">
-                        <?= $rodadaName ?>
-                    </h1>
-                    <div class="round-arrow-link-wrapper">
-                        <?php if ($rodadaIndex < $campeonatoSelecionado->rodadaFinal) : ?>
-                            <a class="round-arrow-link" href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex + 1 ?>#rounds" title="Ver próxima rodada">
-                                <div class="arrow-right"></div>
-                            </a>
-                        <?php endif ?>
-                    </div>
+            <div class="round-selector">
+                <div class="round-arrow-link-wrapper">
+                    <?php if ($rodadaIndex > 0) : ?>
+                    <a class="round-arrow-link"
+                        href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex - 1 ?>#rounds"
+                        title="Ver rodada anterior">
+                        <div class="arrow-left"></div>
+                    </a>
+                    <?php endif ?>
                 </div>
+                <h1 class="round-title | fs-primary-heading fw-bold">
+                    <?= $rodadaName ?>
+                </h1>
+                <div class="round-arrow-link-wrapper">
+                    <?php if ($rodadaIndex < $campeonatoSelecionado->rodadaFinal) : ?>
+                    <a class="round-arrow-link"
+                        href="?id=<?= $campeonatoSelecionado->id ?>&round=<?= $rodadaIndex + 1 ?>#rounds"
+                        title="Ver próxima rodada">
+                        <div class="arrow-right"></div>
+                    </a>
+                    <?php endif ?>
+                </div>
+            </div>
 
-                <div class="round-list <?= $campeonatoSelecionado->possuiClassificacao ? '| flow' : 'no-table-round-list' ?>" style="--flow-space: 3em">
-                    <?php
+            <div class="round-list <?= $campeonatoSelecionado->possuiClassificacao ? '| flow' : 'no-table-round-list' ?>"
+                style="--flow-space: 3em">
+                <?php
                     $esconderCampeonato = true;
                     $mostrarPlacar = true;
                     foreach ($rodadas as $partida) :
                         include 'components/partida.php';
                     endforeach;
                     ?>
-                </div>
+            </div>
 
-            </section>
-        </div>
+        </section>
     </div>
 </main>
