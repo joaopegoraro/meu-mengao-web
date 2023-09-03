@@ -10,7 +10,7 @@ use App\Model\Partida;
 ?>
 
 <div class="c-match-card">
-    <div class="c-match-card__content">
+    <div class="c-match-card__content u-flow" style="--flow-space: 1rem">
         <div class="c-match-card__team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoCasa ?>');">
             <p class="c-match-card__team-name"><?= $partida->timeCasa ?></p>
             <?php if ($mostrarPlacar) : ?>

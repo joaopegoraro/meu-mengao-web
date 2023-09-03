@@ -1,5 +1,5 @@
 <main class="l-container">
-    <div class="c-not-found">
+    <div class="c-not-found u-flow" style="--flow-space: 2rem">
         <div class="c-not-found__image">
             <img src="images/404.webp" alt="Bruno Henrique agachado no gramado triste">
         </div>

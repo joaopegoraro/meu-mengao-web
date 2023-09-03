@@ -10,7 +10,7 @@ use App\Model\Partida;
 ?>
 
 <main class="l-container">
-    <div class="l-grid" style="--grid-gap: 2rem">
+    <div class="u-flow" style="--flow-space: 2rem">
         <h1><?= $partidasTitle ?></h1>
         <div class="l-partidas-grid">
             <?php foreach ($partidas as $partida) : ?>
