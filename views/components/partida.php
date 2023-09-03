@@ -9,34 +9,34 @@ use App\Model\Partida;
  */
 ?>
 
-<div class="match-card">
-    <div class="match-card-content | flow" style="--flow-space: 1em">
-        <div class="team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoCasa ?>');">
-            <p class="team-name"><?= $partida->timeCasa ?></p>
+<div class="c-match-card">
+    <div class="c-match-card__content | l-flow">
+        <div class="c-match-card__team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoCasa ?>');">
+            <p class="c-match-card__team-name"><?= $partida->timeCasa ?></p>
             <?php if ($mostrarPlacar) : ?>
-                <p class="team-score"><?= $partida->golsCasa ?></p>
+            <p><?= $partida->golsCasa ?></p>
             <?php endif ?>
         </div>
-        <div class="team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoFora ?>');">
-            <p class="team-name"><?= $partida->timeFora ?></p>
+        <div class="c-match-card__team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoFora ?>');">
+            <p class="c-match-card__team-name"><?= $partida->timeFora ?></p>
             <?php if ($mostrarPlacar) : ?>
-                <p class="team-score"><?= $partida->golsFora ?></p>
+            <p><?= $partida->golsFora ?></p>
             <?php endif ?>
         </div>
     </div>
-    <div class="match-card-footer <?= $esconderCampeonato ? 'center' : '' ?>">
+    <div class="c-match-card__footer <?= $esconderCampeonato ? 'c-match-card__footer--center' : '' ?>">
         <?php if (!$esconderCampeonato) : ?>
-            <div class="match-round-wrapper">
-                <p class="match-round">
-                    <?= $partida->campeonato ?>
-                    <br />
-                    <?= $partida->rodadaName ?>
-                </p>
-            </div>
+        <div class="c-match-card__round-wrapper">
+            <p class="c-match-card__round">
+                <?= $partida->campeonato ?>
+                <br />
+                <?= $partida->rodadaName ?>
+            </p>
+        </div>
         <?php endif ?>
 
-        <div class="match-date-wrapper">
-            <p class="match-date">
+        <div class="c-match-card__date-wrapper">
+            <p class="c-match-card__date">
                 <?php $date = $partida->getReadableDate(); ?>
                 <?= $date['date'] ?>
                 <br />
