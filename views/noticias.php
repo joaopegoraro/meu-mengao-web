@@ -17,25 +17,26 @@ use App\Model\Posicao;
             <h1>Notícias</h1>
             <ul class="u-nested-flow" role="list" aria-label="Notícias" style="--nested-flow-space: 3rem">
                 <?php foreach ($noticias as $noticia) : ?>
-                    <li>
-                        <article>
-                            <a class="anchor--light" href="<?= htmlspecialchars($noticia->link) ?>">
-                                <img class="c-article__image" src="<?= $noticia->foto ?>" alt="" decoding="async">
-                                <div class="c-article__content u-flow" style="--flow-space: 0.2rem">
-                                    <p class="c-article__site" style="--icon-url: url('data:image/png;base64,<?= $noticia->logoSite ?>');">
-                                        <?= $noticia->site ?>
-                                    </p>
-                                    <h2><?= $noticia->titulo ?></h2>
-                                </div>
-                            </a>
-                        </article>
-                    </li>
+                <li>
+                    <article>
+                        <a class="anchor--light" href="<?= htmlspecialchars($noticia->link) ?>">
+                            <img class="c-article__image" src="<?= $noticia->foto ?>" alt="" decoding="async">
+                            <div class="c-article__content u-flow" style="--flow-space: 0.2rem">
+                                <p class="c-article__site"
+                                    style="--icon-url: url('data:image/png;base64,<?= $noticia->logoSite ?>');">
+                                    <?= $noticia->site ?>
+                                </p>
+                                <h2><?= $noticia->titulo ?></h2>
+                            </div>
+                        </a>
+                    </article>
+                </li>
                 <?php endforeach ?>
             </ul>
         </section>
 
         <aside class="l-noticias-aside u-flow" style="--flow-space: 2rem">
-            <section class="u-nested-flow" style="--nested-flow-space: 1rem;">
+            <section class="u-nested-flow" style="--nested-flow-space: 2rem;">
                 <a class="anchor--dark anchor--big" href="/calendario">
                     Próxima Partida
                 </a>

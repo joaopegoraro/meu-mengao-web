@@ -7,6 +7,9 @@ use App\Model\Partida;
  * @var bool $esconderCampeonato
  * @var bool $mostrarPlacar
  */
+
+if (!isset($esconderCampeonato)) $esconderCampeonato = false;
+if (!isset($mostrarPlacar)) $mostrarPlacar = false;
 ?>
 
 <div class="c-match-card">

@@ -6,6 +6,8 @@
  * @var string $content The name of view to be the main content of the page (without the trailing extension '.php')
  * @var array $data The variables to be used by the $content
  */
+
+if (!isset($title)) $title = null;
 ?>
 
 <!DOCTYPE html>

@@ -7,6 +7,8 @@ use App\Model\Partida;
  * @var bool $mostrarPlacar
  * @var Partida[] $partidas 
  */
+
+if (!isset($mostrarPlacar)) $mostrarPlacar = false;
 ?>
 
 <main class="l-container">

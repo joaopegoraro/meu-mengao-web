@@ -7,6 +7,9 @@ use App\Model\Posicao;
  * @var bool $tabelaCompleta
  * @var Posicao[] $posicoes
  */
+
+if (!isset($classificacaoName)) $classificacaoName = null;
+if (!isset($tabelaCompleta)) $tabelaCompleta = false;
 ?>
 
 <div class="c-table">
