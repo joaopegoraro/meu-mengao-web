@@ -75,7 +75,6 @@ class TabelasController extends Controller
             data: [
                 'title' => $campeonatoSelecionado->nome,
                 'description' => 'Tabelas, classificação e jogos do Flamengo na Série A (Brasileirão), Copa Libertadores, Copa do Brasil, Campeonato Carioca (Estaduais) e outros.',
-                'styles' => ['tabelas', 'partida', 'tabela'],
                 'content' => 'tabelas',
                 'data' => [
                     'rodadas' => $partidas,

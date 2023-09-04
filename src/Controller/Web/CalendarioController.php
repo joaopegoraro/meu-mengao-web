@@ -30,7 +30,6 @@ class CalendarioController extends Controller
             data: [
                 'title' => 'Calendário',
                 'description' => 'Próximos jogos do Flamengo.',
-                'styles' => ['partidas', 'partida'],
                 'content' => 'components/partidas',
                 'data' => [
                     'partidasTitle' => 'Calendário',

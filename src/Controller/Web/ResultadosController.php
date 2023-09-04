@@ -30,7 +30,6 @@ class ResultadosController extends Controller
             data: [
                 'title' => 'Resultados',
                 'description' => 'Resultados dos jogos do Flamengo.',
-                'styles' => ['partidas', 'partida'],
                 'content' => 'components/partidas',
                 'data' => [
                     'partidasTitle' => 'Resultados',
