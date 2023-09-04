@@ -41,7 +41,7 @@ class Campeonato
     {
         return new Campeonato(
             id: $array[self::ID],
-            ano: $array[self::ANO],
+            ano: $array[self::ANO] ?? "",
             nome: $array[self::NOME],
             possuiClassificacao: $array[self::POSSUI_CLASSIFICACAO] == 1,
             rodadaAtual: $array[self::RODADA_ATUAL],
