@@ -20,12 +20,12 @@ if (!isset($title)) $title = null;
 
     <title>Meu Mengão - <?= $title ? htmlspecialchars($title) : "Agregador de notícias do Flamengo" ?></title>
 
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=1">
 
     <link rel="preload" fetchpriority="low" as="image" href="images/logo-200.webp" type="image/webp">
     <link rel="preload" fetchpriority="low" as="image" href="images/playstore-25.webp" type="image/webp">
 
-    <link rel="icon" type="image/x-icon" href="icons/favicon.ico?v=1">
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
 </head>
 
 <body>
