@@ -17,13 +17,13 @@ if (!isset($mostrarPlacar)) $mostrarPlacar = false;
         <div class="c-match-card__team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoCasa ?>');">
             <p class="c-match-card__team-name"><?= $partida->timeCasa ?></p>
             <?php if ($mostrarPlacar) : ?>
-            <p><?= $partida->golsCasa || $partida->golsFora == '-' ? '' : $partida->golsCasa ?></p>
+            <p><?= $partida->golsCasa == '-' ? '' : $partida->golsCasa ?></p>
             <?php endif ?>
         </div>
         <div class="c-match-card__team" style="--icon-url: url('data:image/png;base64,<?= $partida->escudoFora ?>');">
             <p class="c-match-card__team-name"><?= $partida->timeFora ?></p>
             <?php if ($mostrarPlacar) : ?>
-            <p><?= $partida->golsCasa || $partida->golsFora == '-' ? '' : $partida->golsFora ?></p>
+            <p><?= $partida->golsFora == '-' ? '' : $partida->golsFora ?></p>
             <?php endif ?>
         </div>
     </div>
