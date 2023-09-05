@@ -39,7 +39,10 @@ abstract class Controller
         return $this->view(
             name: 'base',
             responseCode: 404,
-            data: ['content' => '404']
+            data: [
+                'content' => '404',
+                'description' => 'Não encontrado',
+            ]
         );
     }
 }
