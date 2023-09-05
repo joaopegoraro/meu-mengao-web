@@ -170,7 +170,7 @@ th {
 td {
   background-color: var(--clr-light-300);
   border-radius: var(--default-radius);
-  padding: 0.5em 0.3em;
+  padding: 0.5em 1em;
   text-align: center;
 }
 
@@ -332,7 +332,6 @@ caption {
 .c-match-card {
   box-shadow: var(--default-shadow);
   border-radius: var(--default-radius);
-  width: 100%;
 }
 .c-match-card__content {
   padding: 1em;
@@ -391,7 +390,7 @@ caption {
 
 .l-partidas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
   grid-column: auto;
   gap: 3.25em;
 }
@@ -435,12 +434,17 @@ caption {
   grid-area: aside;
 }
 
+.c-table {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  overflow: auto;
+  white-space: nowrap;
+}
 .table__team-name {
   text-align: center;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  padding-inline: 0.5em !important;
 }
 .table__team-name::before {
   --size: 20px;
@@ -483,6 +487,10 @@ caption {
   font-size: 0.8rem;
 }
 .c-tables-dropdown {
+  display: flex;
+  justify-content: center;
+}
+.c-tables-dropdown__button {
   position: relative;
   display: inline-block;
   width: min(100%, 350px);
@@ -518,21 +526,27 @@ caption {
 .c-tables-dropdown__item:last-of-type {
   border-radius: 0 0 var(--default-radius) var(--default-radius);
 }
-:is(.c-tables-dropdown:hover, .c-tables-dropdown:focus)
+:is(.c-tables-dropdown__button:hover, .c-tables-dropdown__button:focus)
   .c-tables-dropdown__content {
   display: block;
 }
-:is(.c-tables-dropdown:hover, .c-tables-dropdown:focus)
+:is(.c-tables-dropdown__button:hover, .c-tables-dropdown__button:focus)
   .c-tables-dropdown__title {
   border-radius: var(--default-radius) var(--default-radius) 0 0;
+}
+.c-table {
+  overflow-x: scroll;
 }
 .l-championship-rounds {
   grid-area: rounds;
 }
 .c-round-selector {
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-inline: auto;
+  max-width: 100%;
 }
 .c-arrow-right {
   text-align: end;
@@ -542,6 +556,7 @@ caption {
   border: solid var(--clr-dark-800);
   border-width: 0 3px 3px 0;
   display: inline-block;
+  vertical-align: middle;
   padding: 0.5em;
 
   transform: rotate(-45deg);
@@ -555,6 +570,7 @@ caption {
   border: solid var(--clr-dark-800);
   border-width: 0 3px 3px 0;
   display: inline-block;
+  vertical-align: middle;
   padding: 0.5em;
 
   transform: rotate(135deg);
@@ -563,7 +579,6 @@ caption {
 
 .l-round-list--no-table {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
   grid-column: auto;
   gap: 3.25em;
 }
@@ -591,7 +606,6 @@ caption {
   .table__team-name {
     text-align: start;
     max-width: 100%;
-    padding: 0.5em 1em;
   }
   .table__team-non-initials {
     display: inline;
@@ -618,10 +632,6 @@ caption {
     display: inline;
   }
 
-  .c-match-card {
-    max-width: max(350px, 100%);
-  }
-
   .l-partidas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
@@ -641,12 +651,15 @@ caption {
     bottom: 0;
   }
 
+  .c-match-card {
+    max-width: 100%;
+  }
+
   .table__optional-cell {
     display: none;
   }
   .table__team-name {
     text-align: center;
-    padding-inline: 0.5em;
   }
   .table__team-non-initials {
     display: none;
@@ -659,7 +672,7 @@ caption {
 
   .l-tables-grid {
     grid-template-areas: "tables rounds";
-    grid-template-columns: auto minmax(225px, 30%);
+    grid-template-columns: auto 30%;
   }
 
   .l-round-list--no-table {
@@ -673,7 +686,6 @@ caption {
   .table__team-name {
     text-align: start;
     max-width: 100%;
-    padding: 0.5em 1em;
   }
   .table__team-non-initials {
     display: inline;
@@ -681,11 +693,6 @@ caption {
   }
   .table__team-initials {
     text-transform: none;
-  }
-
-  .l-tables-grid {
-    grid-template-areas: "tables rounds";
-    grid-template-columns: auto minmax(350px, 30%);
   }
 }
 
@@ -695,5 +702,12 @@ caption {
   }
   .l-championship-tables {
     font-size: 1rem;
+  }
+  .c-round-selector {
+    max-width: 350px;
+  }
+  .l-tables-grid {
+    grid-template-areas: "tables rounds";
+    grid-template-columns: auto max(350px, 30%);
   }
 }

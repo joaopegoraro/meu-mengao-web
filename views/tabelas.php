@@ -16,16 +16,18 @@ use App\Model\Campeonato;
     <div class="l-tables-grid<?php if (!$campeonatoSelecionado->possuiClassificacao) echo ' l-tables-grid--no-table' ?>">
         <section class="l-championship-tables u-flow" style="--flow-space: 2rem">
 
-            <div class="c-tables-dropdown" tabindex=0>
-                <h1 class="c-tables-dropdown__title">
-                    <?= $campeonatoSelecionado->nome ?? 'Campeonato' ?>
-                </h1>
-                <div class="c-tables-dropdown__content">
-                    <?php foreach ($campeonatos as $campeonato) : ?>
-                        <a class="c-tables-dropdown__item anchor--light" href="?id=<?= $campeonato->id ?>">
-                            <?= $campeonato->nome ?>
-                        </a>
-                    <?php endforeach ?>
+            <div class="c-tables-dropdown">
+                <div class="c-tables-dropdown__button" tabindex=0>
+                    <h1 class="c-tables-dropdown__title">
+                        <?= $campeonatoSelecionado->nome ?? 'Campeonato' ?>
+                    </h1>
+                    <div class="c-tables-dropdown__content">
+                        <?php foreach ($campeonatos as $campeonato) : ?>
+                            <a class="c-tables-dropdown__item anchor--light" href="?id=<?= $campeonato->id ?>">
+                                <?= $campeonato->nome ?>
+                            </a>
+                        <?php endforeach ?>
+                    </div>
                 </div>
             </div>
 

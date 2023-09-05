@@ -40,10 +40,12 @@ use App\Model\Posicao;
                 <a class="anchor--dark anchor--big" href="/calendario">
                     Próxima Partida
                 </a>
-                <?php
-                $partida = $proximaPartida;
-                include 'components/partida.php';
-                ?>
+                <div class="l-next-match">
+                    <?php
+                    $partida = $proximaPartida;
+                    include 'components/partida.php';
+                    ?>
+                </div>
             </section>
 
             <section class="u-nested-flow" style="--nested-flow-space: 1rem;">
