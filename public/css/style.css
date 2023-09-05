@@ -326,6 +326,7 @@ caption {
   padding: 3em;
   display: flex;
   gap: 2em;
+  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
 }
