@@ -5,12 +5,6 @@
 <h1 align="center"> Meu Mengão Web </h1>
 
 <p align="center">
-<a href="https://play.google.com/store/apps/details?id=com.joaopegoraro.meu_mengao">
-<img src="https://img.shields.io/badge/Download%20in%20Play%20Store-f39f37?style=social&logo=googleplay" alt="Download in Play Store" />
-</a> 
-</p>
-
-<p align="center">
 Website with the latest Flamengo news, fixtures, results and standings, 
 with no ads. 
 </br>
