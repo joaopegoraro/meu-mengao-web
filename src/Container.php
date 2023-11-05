@@ -32,7 +32,7 @@ class Container
     {
         return $this->pdo ?? $this->pdo = new PDO(
             dsn: "mysql:host=localhost;dbname=meu_mengao",
-            username: "admin",
+            username: "root",
             password: "password",
         );
     }

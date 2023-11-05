@@ -110,6 +110,7 @@ class Partida
     {
         $dateSeconds = (int) $this->data / 1000;
         $now = new DateTime('now');
+        $now->setTime(0, 0, 0, 0);
         $dateTime = new DateTime('@' . $dateSeconds);
         $dateTime->setTime(0, 0, 0, 0);
 
