@@ -41,22 +41,27 @@ use App\Model\Posicao;
                     Próxima Partida
                 </a>
                 <div class="l-next-match">
-                    <?php
-                    $partida = $proximaPartida;
-                    include 'components/partida.php';
+                    <?php if ($proximaPartida): 
+                        $partida = $proximaPartida;
+                        include 'components/partida.php';
                     ?>
+                    <?php else: ?>
+                    Nenhuma partida agendada
+                    <?php endif ?>
                 </div>
             </section>
 
-            <section class="u-nested-flow" style="--nested-flow-space: 1rem;">
-                <a class="anchor--dark anchor--big" href="/tabelas?id=serie-a">
-                    Tabela Brasileirão
-                </a>
-                <?php
-                $posicoes = $tabelaBrasileirao;
-                include 'components/tabela.php';
-                ?>
-            </section>
+            <?php if ($tabelaBrasileirao): ?>
+                <section class="u-nested-flow" style="--nested-flow-space: 1rem;">
+                    <a class="anchor--dark anchor--big" href="/tabelas?id=serie-a">
+                        Tabela Brasileirão
+                    </a>
+                    <?php
+                    $posicoes = $tabelaBrasileirao;
+                    include 'components/tabela.php';
+                    ?>
+                </section>
+            <?php endif ?>
         </aside>
     </div>
 </main>
